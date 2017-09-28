@@ -1,0 +1,36 @@
+/* Sample code for interfacing with a SD card*/
+
+#include<SD.h>      // SD library required to interface with SD card
+
+File myFile;        // variable required to hold the file descriptor
+const int chipSelect = 4;         // the pin number which is used as a SS pin
+
+void setup()
+{
+	Serial.begin(9600);
+	Serial.print("Initializing SD card...");
+	pinMode(10, OUTPUT);         // Must set the hardware SS pin as output eventhough it is not used
+	
+	while(!SD.begin(chipSelect));
+	Serial.println("card initialized.");
+	
+	while(!(myFile = SD.open("new.txt", FILE_WRITE))); // open a file for writing
+	myFile.println("What's up SD card!");    // write the string into the file
+	myFile.close();   // close the file
+	
+	while(!(myFile = SD.open("new.txt")));   // open the file for reading
+	while (myFile.available())    // read the file till the last byte
+		Serial.write(myFile.read());
+	myFile.close();     // close the file
+	
+	pinMode(6, OUTPUT);    // make the pin where the LED is connected as output
+}
+
+void loop()
+{
+	digitalWrite(6, HIGH);     // turn the LED on
+	delay(1000);              // wait for a second
+	digitalWrite(6, LOW);     // turn the LED off
+	delay(1000);
+}
+	
