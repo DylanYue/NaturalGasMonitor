@@ -1,0 +1,8 @@
+1. Connect the 5V pin to the 5V pin on the Arduino
+2. Connect the GND pin to the GND pin on the Arduino
+3. Connect CLK to pin 13 or 52.
+4. Connect DO to pin 12 or 50.
+5. Connect DI to pin 11 or 51.
+6. Connect CS to pin 10 or 53.
+
+Reference: https://learn.adafruit.com/adafruit-micro-sd-breakout-board-card-tutorial/intro
