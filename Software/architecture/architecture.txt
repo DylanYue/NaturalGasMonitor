@@ -1,0 +1,16 @@
+Software Components:
+	1. UI
+	2. Sensor reader from the pressure sensor
+	3. Time reader from the time source
+	4. Writer to write "Date, Time, Pressure" strings to a file every 5 mins.
+	5. Bluetooth sender to send data file to cellphone.
+	6. House keeping componets: deleting files when space is full etc.
+	
+Hardware Components:
+	1. Arduino Uno Board
+	2. Pressure sensor
+	3. LCD display
+	4. Four buttons
+	5. Bluetooth Module
+	6. SD card module
+	7. Time module
