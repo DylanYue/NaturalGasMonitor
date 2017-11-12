@@ -91,12 +91,17 @@ def DrawText(posX, rowNumber, text):
 
 def PlaceSelector(rowNumber):
 	DrawText(0, rowNumber, "->")
-	
 
+# Initialize the selector position	
+selectorPos = 0
+	
 while 1:
 	draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 	
+	PlaceSelector(selectorPos)
+		
 	if not GPIO.input(U_pin):
-		PlaceSelector(2)
+		selectorPos += 1
+		PlaceSelector(selectorPos)
 		DrawText(14, 2, "Up button");
 	RefreshDisplay()
