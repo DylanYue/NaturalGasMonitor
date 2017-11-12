@@ -83,8 +83,8 @@ def DrawText(posX, rowNumber, text):
 		posY = 38
 	elif rowNumber == 5:
 		posY = 48
-	else:
-		posY = 58
+	else: # This display can only handle 6 lines, if rowNumber is bigger than 5, it goes to the first row.
+		posY = -2
 	
 	draw.text((posX, posY), text, font = font, fill = 255)
 	DisplayImage()
@@ -97,7 +97,7 @@ while 1:
 	if not GPIO.input(U_pin):
 		DrawText(0, 2, "Up button");
 	else:
-		DrawText(0, 6, "Lower Limit");
+		DrawText(0, 5, "Lower Limit");
 	
 	if not GPIO.input(D_pin):
 		ClearScreen()
