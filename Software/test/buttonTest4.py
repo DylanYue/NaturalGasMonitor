@@ -151,11 +151,11 @@ ButtonB = PushButton(B_pin)
 
 while 1:
 			
-	if ButtonD.ButtonPressed():
+	if ButtonL.ButtonPressed():
 		ClearScreen()
 		selectorPos += 1
 		PlaceSelector(selectorPos)
-		DrawText(14, 2, "Down button");
+		DrawText(14, 2, "Left button");
 		
 	if ButtonU.BottonPressed():
 		ClearScreen()
