@@ -98,11 +98,12 @@ def PlaceSelector(rowNumber):
 selectorPos = 0
 	
 while 1:
-	draw.rectangle((0,0,width,height), outline = 0, fill = 0)
+	ClearScreen()
 	
 	PlaceSelector(selectorPos)
 		
-	if not GPIO.input(U_pin):
+	if not GPIO.input(D_pin):
+		ClearScreen()
 		selectorPos += 1
 		PlaceSelector(selectorPos)
 		DrawText(14, 2, "Up button");
