@@ -100,7 +100,7 @@ ButtonB = PushButton(B_pin)
 
 percentage = 0
 while 1:
-	DrawBatteryStatus(0.8)
+	DrawBatteryStatus(percentage)
 	if ButtonL.ButtonPressed():
 		ClearScreen()
 		selectorPos += 1
