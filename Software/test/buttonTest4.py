@@ -56,7 +56,9 @@ draw = ImageDraw.Draw(image)
 # Draw a black filled box to clear the image.
 draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 
+# Setup default font, other truetype fonts can be used as long as they are in the same folder of the python script
 font = ImageFont.load_default()
+
 def DisplayImage():
 	disp.image(image)
 	disp.display()
@@ -65,13 +67,35 @@ def ClearScreen():
 	draw.rectangle((0, 0, width, height), outline = 0, fill = 0)
 	DisplayImage()
 	
+def WriteText(posX, rowNumber, text):
+	# posX is the x position of the text
+	# rowNumber is the on which row the text appears
+	# text is the text you want to display
+	if rowNumber == 0:
+		posY = -2
+	elif rowNumber == 1:
+		posY = 8
+	elif rowNumber == 2:
+		posY = 18
+	elif rowNumber == 3:
+		posY = 28
+	elif rowNumber == 4:
+		posY = 38
+	elif rowNumber == 5:
+		posY = 48
+	else:
+		posY = 58
+	
+	draw.text((posX, posY), text, font = font, fill = 255)
+	DisplayImage()
+		
+	
 
 while 1:
 	draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 	
 	if not GPIO.input(U_pin):
-		draw.text((0,-2), "你好", font = font, fill = 255)
-		draw.text((2,10), "Test", font = font, fill = 255)
+		WriteText(0, 0, "Up button");
 	else:
 		draw.text((0,-2), "Hehe", font = font, fill = 255)
 	
