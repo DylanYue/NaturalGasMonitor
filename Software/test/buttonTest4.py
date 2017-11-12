@@ -46,12 +46,12 @@ disp.display()
 
 # Create blank image for drawing
 # Make sure to create image with mode '1' for 1-bit color
-global width = disp.width
-global height = disp.height
+width = disp.width
+height = disp.height
 image = Image.new('1', (width, height))
 
 # Get the drawing object to draw on image.
-global draw = ImageDraw.Draw(image)
+draw = ImageDraw.Draw(image)
 
 # Draw a black filled box to clear the image.
 draw.rectangle((0,0,width,height), outline = 0, fill = 0)
@@ -59,7 +59,7 @@ draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 font = ImageFont.load_default()
 
 def ClearScreen():
-	draw.rectangle(0, 0, global.width, global.height), outline = 0, fill = 0)
+	draw.rectangle(0, 0, width, height), outline = 0, fill = 0)
 	disp.image(image)
 	disp.display()
 	
