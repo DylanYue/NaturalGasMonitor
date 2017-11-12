@@ -67,7 +67,7 @@ def ClearScreen():
 	draw.rectangle((0, 0, width, height), outline = 0, fill = 0)
 	DisplayImage()
 	
-def WriteText(posX, rowNumber, text):
+def DrawText(posX, rowNumber, text):
 	# posX is the x position of the text
 	# rowNumber is the on which row the text appears
 	# text is the text you want to display
@@ -95,9 +95,9 @@ while 1:
 	draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 	
 	if not GPIO.input(U_pin):
-		WriteText(0, 0, "Up button");
+		DrawText(0, 2, "Up button");
 	else:
-		draw.text((0,-2), "Hehe", font = font, fill = 255)
+		DrawText(0, 5, "Lower Limit");
 	
 	if not GPIO.input(D_pin):
 		ClearScreen()
