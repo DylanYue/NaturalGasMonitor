@@ -90,8 +90,7 @@ def DrawText(posX, rowNumber, text):
 
 
 def PlaceSelector(rowNumber):
-	if rowNumber > 5:
-		rowNumber %= 6
+	rowNumber %= 6
 	DrawText(0, rowNumber, "->")
 
 # Initialize the selector position	
@@ -103,5 +102,11 @@ while 1:
 		ClearScreen()
 		selectorPos += 1
 		PlaceSelector(selectorPos)
-		DrawText(14, 2, "Up button");
+		DrawText(14, 2, "Down button");
+		
+	if not GPIO.input(U_pin):
+		ClearScreen()
+		selectorPos -= 1
+		PlaceSelector(selectorPos)
+		DrawText(14, 3, "Up button");
 	RefreshDisplay()
