@@ -59,13 +59,13 @@ draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 # Setup default font, other truetype fonts can be used as long as they are in the same folder of the python script
 font = ImageFont.load_default()
 
-def DisplayImage():
+def RefreshDisplay():
 	disp.image(image)
 	disp.display()
 
 def ClearScreen():
 	draw.rectangle((0, 0, width, height), outline = 0, fill = 0)
-	DisplayImage()
+
 	
 def DrawText(posX, rowNumber, text):
 	# posX is the x position of the text
@@ -87,7 +87,7 @@ def DrawText(posX, rowNumber, text):
 		posY = -2
 	
 	draw.text((posX, posY), text, font = font, fill = 255)
-	DisplayImage()
+
 
 def PlaceSelector(rowNumber):
 	DrawText(0, rowNumber, "->")
@@ -99,8 +99,4 @@ while 1:
 	if not GPIO.input(U_pin):
 		PlaceSelector(2)
 		DrawText(14, 2, "Up button");
-	else:
-		DrawText(0, 3, "Lower Limit");
-	
-	if not GPIO.input(D_pin):
-		ClearScreen()
+	RefreshDisplay()
