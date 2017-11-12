@@ -53,6 +53,12 @@ def RefreshDisplay():
 def ClearScreen():
 	draw.rectangle((0, 0, width, height), outline = 0, fill = 0)
 
+def ClearTextArea():
+	draw.rectangle((0, 0, width, 60), outline = 0, fill = 0)
+
+def ClearBatArea():
+	draw.rectangle((0, 61, width, height), outline = 0, fill = 0)
+
 	
 def DrawText(posX, rowNumber, text):
 	# posX is the x position of the text
@@ -102,7 +108,7 @@ percentage = 0
 while 1:
 	DrawBatteryStatus(percentage)
 	if ButtonL.ButtonPressed():
-		ClearScreen()
+		ClearTextArea()
 		selectorPos += 1
 		PlaceSelector(selectorPos)
 		DrawText(14, 2, "Left button");
@@ -110,7 +116,7 @@ while 1:
 		pass
 		
 	if ButtonA.ButtonPressed():
-		ClearScreen()
+		ClearTextArea()
 		percentage += 0.1
 		DrawText(14, 5, "A button");
 	else:
