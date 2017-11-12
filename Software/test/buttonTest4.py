@@ -5,6 +5,10 @@ import time
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
 
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+
 # Input pins:
 U_pin = 22
 
