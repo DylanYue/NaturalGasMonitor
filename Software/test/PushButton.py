@@ -1,3 +1,9 @@
+""" This is the push button class for UI
+    Author: Dingjun Yue (dingjun.yue@gmail.com)
+    Date: Nov/2017
+"""
+
+
 import RPi.GPIO as GPIO
 import time
 

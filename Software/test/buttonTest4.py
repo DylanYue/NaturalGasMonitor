@@ -8,6 +8,9 @@ from PIL import ImageDraw
 from PIL import ImageFont
 from PushButton import PushButton
 
+# Text area of the screen starts from (0, 0) to (width, 60)
+# Battery status area of the screen starts from (0, 61) to (width, height)
+
 # Input pins:
 L_pin = 27 
 R_pin = 23 
@@ -104,7 +107,7 @@ ButtonD = PushButton(D_pin)
 ButtonA = PushButton(A_pin)
 ButtonB = PushButton(B_pin)
 
-percentage = 0.2
+percentage = 0.1
 while 1:
 	DrawBatteryStatus(percentage)
 	if ButtonL.ButtonPressed():
@@ -117,7 +120,7 @@ while 1:
 		
 	if ButtonA.ButtonPressed():
 		ClearTextArea()
-		percentage += 0.1
+		percentage += 0.05
 		DrawText(14, 5, "A button");
 	else:
 		pass
