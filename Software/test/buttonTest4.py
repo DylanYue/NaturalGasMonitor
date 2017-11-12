@@ -98,7 +98,7 @@ while 1:
 	
 	if not GPIO.input(U_pin):
 		PlaceSelector(2)
-		DrawText(0, 2, "Up button");
+		DrawText(6, 2, "Up button");
 	else:
 		DrawText(0, 3, "Lower Limit");
 	
