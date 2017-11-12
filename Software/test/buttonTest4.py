@@ -91,7 +91,7 @@ def DrawText(posX, rowNumber, text):
 
 def PlaceSelector(rowNumber):
 	if rowNumber > 5:
-		rowNumber %= 5
+		rowNumber %= 6
 	DrawText(0, rowNumber, "->")
 
 # Initialize the selector position	
@@ -100,7 +100,6 @@ selectorPos = 0
 while 1:
 	ClearScreen()
 	
-	PlaceSelector(5)
 		
 	if not GPIO.input(D_pin):
 		ClearScreen()
