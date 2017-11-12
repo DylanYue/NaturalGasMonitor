@@ -89,7 +89,7 @@ def DrawText(posX, rowNumber, text):
 	draw.text((posX, posY), text, font = font, fill = 255)
 	DisplayImage()
 
-def PlaceSelector(rowNumber)
+def PlaceSelector(rowNumber):
 	DrawText(0, rowNumber, "->")
 	
 
