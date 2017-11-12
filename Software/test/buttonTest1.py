@@ -62,6 +62,7 @@ font = ImageFont.load_default()
 try:
     while 1:
         if GPIO.input(U_pin): # Up button is pressed
+            
         else:
             draw.text((0, -2), "Up button is pressed!", font= font, fill = 255)
 
