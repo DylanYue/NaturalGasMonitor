@@ -20,7 +20,7 @@ class PushButton(object):
             True   ==> button pressed once
             False  ==> button not pressed
         """
-        pressed = GPIO.wait_for_edge(self.pin_number, GPIO.FALLING)
+        pressed = GPIO.input(self.pin_number)
         time.sleep(0.25)  # Wait 0.25s for the bouncing effect of physical switches
         return True if pressed else False
 
