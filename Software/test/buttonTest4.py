@@ -90,6 +90,8 @@ def DrawText(posX, rowNumber, text):
 
 
 def PlaceSelector(rowNumber):
+	if rowNumber > 5:
+		rowNumber %= 5
 	DrawText(0, rowNumber, "->")
 
 # Initialize the selector position	
