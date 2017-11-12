@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[4]:
 
 
 import RPi.GPIO as GPIO
@@ -61,11 +61,6 @@ font = ImageFont.load_default()
 
 try:
     while 1:
-        if GPIO.input(U_pin): # Up button is pressed
-            
-        else:
+        if GPIO.input(not U_pin): # Up button is pressed
             draw.text((0, -2), "Up button is pressed!", font= font, fill = 255)
-
-    
-
 
