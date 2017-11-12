@@ -58,6 +58,8 @@ draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 font = ImageFont.load_default()
 
 while 1:
+	draw.rectangle((0,0,width,height), outline = 0, fill = 0)
+	
 	if not GPIO.input(U_pin):
 		draw.text((0,-2), "Up button", font = font, fill = 255)
 	else:
