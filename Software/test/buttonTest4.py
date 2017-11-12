@@ -88,13 +88,15 @@ def DrawText(posX, rowNumber, text):
 	
 	draw.text((posX, posY), text, font = font, fill = 255)
 
-
-def PlaceSelector(rowNumber):
-	rowNumber %= 6
-	DrawText(0, rowNumber, "->")
-
 # Initialize the selector position	
 selectorPos = 0
+
+def selectorPosConditioner (rawPos):
+	return rawPos % 6
+
+def PlaceSelector(rowNumber):
+	DrawText(0, selectorPosConditioner(rowNumber), "->")
+
 	
 while 1:
 			
