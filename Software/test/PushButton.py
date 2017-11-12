@@ -1,3 +1,6 @@
+import RPi.GPIO as GPIO
+import time
+
 class PushButton(object):
 
     def __init__(self, pin_number):
