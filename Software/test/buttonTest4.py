@@ -72,6 +72,8 @@ while 1:
 		draw.text((2,10), "Test", font = font, fill = 255)
 	else:
 		draw.text((0,-2), "Hehe", font = font, fill = 255)
+	
+	if not GPIO.input(D_pin):
 		ClearScreen()
 		
 	disp.image(image)
