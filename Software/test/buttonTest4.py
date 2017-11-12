@@ -101,10 +101,4 @@ while 1:
 		selectorPos += 1
 		PlaceSelector(selectorPos)
 		DrawText(14, 2, "Left button");
-		
-	if ButtonU.BottonPressed():
-		ClearScreen()
-		selectorPos -= 1
-		PlaceSelector(selectorPos)
-		DrawText(14, 3, "Up button");
 	RefreshDisplay()
