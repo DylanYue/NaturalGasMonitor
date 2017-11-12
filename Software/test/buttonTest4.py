@@ -59,6 +59,8 @@ draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 # Setup default font, other truetype fonts can be used as long as they are in the same folder of the python script
 font = ImageFont.load_default()
 
+menu
+
 def RefreshDisplay():
 	disp.image(image)
 	disp.display()
@@ -91,22 +93,72 @@ def DrawText(posX, rowNumber, text):
 # Initialize the selector position	
 selectorPos = 0
 
-def selectorPosConditioner (rawPos):
+def SelectorPosConditioner (rawPos):
+	# This function always returns the selector's real position on the screen (0 - 5)
 	return rawPos % 6
 
 def PlaceSelector(rowNumber):
-	DrawText(0, selectorPosConditioner(rowNumber), "->")
+	DrawText(0, SelectorPosConditioner(rowNumber), "->")
 
-	
+
+class PushButton(object):
+
+    def __init__(self, pin_number):
+        self.pin_number = pin_number
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.pin_number, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+
+    def ButtonDown(self):
+        """ This method detects if the button is down
+            True  ==> button down
+            False ==> button up
+        """
+        return True if not GPIO.input(self.pin_number) else False
+
+    def ButtonPressed(self):
+        """ This method detects if the button is pressed once
+            True   ==> button pressed once
+            False  ==> button not pressed
+        """
+        pressed = GPIO.wait_for_edge(self.pin_number, GPIO.FALLING)
+        time.sleep(0.15)  # Wait 0.15s for the bouncing effect of physical switches
+        return True if pressed else False
+
+    def HoldTime(self):
+        """ This method returns the time the button is held down
+        """
+        # Return 0 is button is not down.
+        if not self.ButtonDown():
+            return 0
+        # Return the time the button is held down.
+        else:
+            start = time.time()
+            while self.ButtonDown():
+                time.sleep(0.01)
+                # If the button has been holding down for more than 5 seconds
+                # break the loop and return the hold time.
+                if (time.time() - start) > 5:
+                    break
+            length = time.time() - start
+            return length
+
+# Initialize Button Objects			
+ButtonL = PushButton(L_pin)
+ButtonR = PushButton(R_pin)
+ButtonU = PushButton(U_pin)
+ButtonD = PushButton(D_pin)
+ButtonA = PushButton(A_pin)
+ButtonB = PushButton(B_pin)
+
 while 1:
 			
-	if not GPIO.input(D_pin):
+	if not ButtonD.ButtonPressed():
 		ClearScreen()
 		selectorPos += 1
 		PlaceSelector(selectorPos)
 		DrawText(14, 2, "Down button");
 		
-	if not GPIO.input(U_pin):
+	if not ButtonU.BottonPressed():
 		ClearScreen()
 		selectorPos -= 1
 		PlaceSelector(selectorPos)
