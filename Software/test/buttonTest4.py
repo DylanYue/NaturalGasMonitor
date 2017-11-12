@@ -59,7 +59,6 @@ draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 # Setup default font, other truetype fonts can be used as long as they are in the same folder of the python script
 font = ImageFont.load_default()
 
-menu
 
 def RefreshDisplay():
 	disp.image(image)
