@@ -100,7 +100,7 @@ selectorPos = 0
 while 1:
 	ClearScreen()
 	
-	PlaceSelector(selectorPos)
+	PlaceSelector(5)
 		
 	if not GPIO.input(D_pin):
 		ClearScreen()
