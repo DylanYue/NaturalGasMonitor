@@ -10,9 +10,9 @@ from PIL import ImageDraw
 from PIL import ImageFont
 
 # Input pins:
-U_pin = 22
 
 GPIO.setmode(GPIO.BCM)
+U_pin = 22
 
 GPIO.setup(U_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
