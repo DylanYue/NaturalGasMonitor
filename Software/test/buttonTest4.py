@@ -104,7 +104,7 @@ ButtonD = PushButton(D_pin)
 ButtonA = PushButton(A_pin)
 ButtonB = PushButton(B_pin)
 
-percentage = 0
+percentage = 0.2
 while 1:
 	DrawBatteryStatus(percentage)
 	if ButtonL.ButtonPressed():
