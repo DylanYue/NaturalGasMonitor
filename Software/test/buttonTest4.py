@@ -106,9 +106,11 @@ while 1:
 		selectorPos += 1
 		PlaceSelector(selectorPos)
 		DrawText(14, 2, "Left button");
+	else
 		
 	if ButtonA.ButtonPressed():
 		ClearScreen()
 		percentage += 0.1
 		DrawText(14, 5, "A button");
+	else
 	RefreshDisplay()
