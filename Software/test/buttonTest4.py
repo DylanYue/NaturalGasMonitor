@@ -59,7 +59,7 @@ draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 font = ImageFont.load_default()
 
 def ClearScreen():
-	draw.rectangle(0, 0, width, height), outline = 0, fill = 0)
+	draw.rectangle((0, 0, width, height), outline = 0, fill = 0)
 	disp.image(image)
 	disp.display()
 	
