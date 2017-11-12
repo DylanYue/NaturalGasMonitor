@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(U_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-disp = Adafruit_SSD1306.SSD1306_128_64
+disp = Adafruit_SSD1306.SSD1306_128_64(None)
 
 disp.begin()
 
