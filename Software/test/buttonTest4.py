@@ -61,7 +61,7 @@ while 1:
 	draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 	
 	if not GPIO.input(U_pin):
-		draw.text((0,-2), "Up button", font = font, fill = 255)
+		draw.text((0,-2), "你好", font = font, fill = 255)
 		draw.text((2,10), "Test", font = font, fill = 255)
 	else:
 		draw.text((0,-2), "Hehe", font = font, fill = 255)
