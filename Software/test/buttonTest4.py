@@ -77,7 +77,7 @@ def DrawText(posX, rowNumber, text):
 	
 def DrawBatteryStatus(batPercent):
 	batWidth = batPercent * width
-	draw.rectangle((0, 60, batWidth, height), outline = 0, fill = 255)
+	draw.rectangle((0, 61, batWidth, height), outline = 0, fill = 255)
 
 # Initialize the selector position	
 selectorPos = 0
@@ -98,6 +98,7 @@ ButtonD = PushButton(D_pin)
 ButtonA = PushButton(A_pin)
 ButtonB = PushButton(B_pin)
 
+percentage = 0
 while 1:
 	DrawBatteryStatus(0.8)
 	if ButtonL.ButtonPressed():
@@ -108,7 +109,6 @@ while 1:
 		
 	if ButtonA.ButtonPressed():
 		ClearScreen()
-		selectorPos += 1
-		PlaceSelector(selectorPos)
-		DrawText(14, 3, "A button");
+		percentage += 0.1
+		DrawText(14, 5, "A button");
 	RefreshDisplay()
