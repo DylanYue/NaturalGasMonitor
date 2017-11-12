@@ -61,7 +61,7 @@ while 1:
 	if not GPIO.input(U_pin):
 		draw.text((0,-2), "Up button", font = font, fill = 255)
 	else:
-		draw.text((0,-2), "", font = font, fill = 255)
+		draw.text((0,-2), "Hehe", font = font, fill = 255)
 		
 	disp.image(image)
 	disp.display()
