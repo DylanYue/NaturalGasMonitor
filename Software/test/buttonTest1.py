@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[4]:
-
-
 import RPi.GPIO as GPIO
  
 import time
@@ -63,4 +57,3 @@ try:
     while 1:
         if GPIO.input(not U_pin): # Up button is pressed
             draw.text((0, -2), "Up button is pressed!", font= font, fill = 255)
-
