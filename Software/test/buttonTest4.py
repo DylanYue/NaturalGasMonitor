@@ -98,9 +98,7 @@ def PlaceSelector(rowNumber):
 selectorPos = 0
 	
 while 1:
-	ClearScreen()
-	
-		
+			
 	if not GPIO.input(D_pin):
 		ClearScreen()
 		selectorPos += 1
