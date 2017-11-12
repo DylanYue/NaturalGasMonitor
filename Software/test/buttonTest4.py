@@ -97,9 +97,7 @@ while 1:
 	if not GPIO.input(U_pin):
 		DrawText(0, 2, "Up button");
 	else:
-		DrawText(0, 5, "Lower Limit");
+		DrawText(0, 6, "Lower Limit");
 	
 	if not GPIO.input(D_pin):
 		ClearScreen()
-	
-	DisplayImage()
