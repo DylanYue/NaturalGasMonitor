@@ -21,7 +21,7 @@ class PushButton(object):
             False  ==> button not pressed
         """
         pressed = not GPIO.input(self.pin_number)
-        time.sleep(0.02)  # Wait 0.25s for the bouncing effect of physical switches
+        time.sleep(0.02)  # Wait 0.02s for the bouncing effect of physical switches
         return True if pressed else False
 
     def HoldTime(self):
