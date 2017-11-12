@@ -25,7 +25,7 @@ disp.display()
 
 width = disp.width
 height = disp.height
-image = Image.new('l', (width, height))
+image = Image.new('1', (width, height))
 
 draw = ImageDraw.Draw(image)
 
