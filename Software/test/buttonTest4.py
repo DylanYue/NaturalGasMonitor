@@ -88,13 +88,16 @@ def DrawText(posX, rowNumber, text):
 	
 	draw.text((posX, posY), text, font = font, fill = 255)
 	DisplayImage()
-		
+
+def PlaceSelector(rowNumber)
+	DrawText(0, rowNumber, "->")
 	
 
 while 1:
 	draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 	
 	if not GPIO.input(U_pin):
+		PlaceSelector(2)
 		DrawText(0, 2, "Up button");
 	else:
 		DrawText(0, 3, "Lower Limit");
