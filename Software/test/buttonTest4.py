@@ -57,11 +57,13 @@ draw = ImageDraw.Draw(image)
 draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 
 font = ImageFont.load_default()
+def DisplayImage():
+	disp.image(image)
+	disp.display()
 
 def ClearScreen():
 	draw.rectangle((0, 0, width, height), outline = 0, fill = 0)
-	disp.image(image)
-	disp.display()
+	DisplayImage()
 	
 
 while 1:
@@ -75,6 +77,5 @@ while 1:
 	
 	if not GPIO.input(D_pin):
 		ClearScreen()
-		
-	disp.image(image)
-	disp.display()
+	
+	DisplayImage()
