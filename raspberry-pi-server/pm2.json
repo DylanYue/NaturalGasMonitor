@@ -1,0 +1,8 @@
+{
+  "apps": [
+    {
+      "name": "gas-monitor",
+      "script": "./bin/www"
+    }
+  ]
+}
