@@ -100,7 +100,7 @@ def DrawStatus(rowNumber, text):
 	else: # This display can only handle 6 lines, if rowNumber is bigger than 5, it goes to the first row.
 		posY = -2
 	
-	draw.text((100, posY), text, font = font, fill = 255)
+	draw.text((101, posY), text, font = font, fill = 255)
 	
 def DrawBatteryStatus(batPercent):
 	batWidth = batPercent * width
@@ -128,19 +128,24 @@ ButtonB = PushButton(B_pin)
 percentage = 0.1
 while 1:
 	DrawBatteryStatus(percentage)
-	draw.rectangle((100, 0, width, 60), outline = 1, fill = 0)
+	draw.rectangle((100, 0, width-1, 60), outline = 1, fill = 0)
+	DrawText(0, "Setting")
+	DrawText(1, "Wifi Setting")
+	DrawText(2, "Battery Setting")
+	PlaceSelector(1)
+	DrawStatus(0,"Wifi")
 	if ButtonL.ButtonPressed():
 		ClearTextArea()
 		selectorPos += 1
 		PlaceSelector(selectorPos)
-		DrawText(14, 2, "Left button");
+		DrawText(2, "Left button");
 	else:
 		pass
 		
 	if ButtonA.ButtonPressed():
 		ClearTextArea()
 		percentage += 0.05
-		DrawText(14, 5, "A button");
+		DrawText(5, "A button");
 	else:
 		pass
 	RefreshDisplay()
