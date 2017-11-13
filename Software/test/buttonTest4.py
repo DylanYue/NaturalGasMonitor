@@ -63,8 +63,8 @@ def ClearBatArea():
 	draw.rectangle((0, 61, width, height), outline = 0, fill = 0)
 
 	
-def DrawText(posX, rowNumber, text):
-	# posX is the x position of the text
+def DrawText(rowNumber, text):
+	# The X position of text is 14
 	# rowNumber is the on which row the text appears
 	# text is the text you want to display
 	if rowNumber == 0:
@@ -82,7 +82,25 @@ def DrawText(posX, rowNumber, text):
 	else: # This display can only handle 6 lines, if rowNumber is bigger than 5, it goes to the first row.
 		posY = -2
 	
-	draw.text((posX, posY), text, font = font, fill = 255)
+	draw.text((14, posY), text, font = font, fill = 255)
+	
+def DrawStatus(rowNumber, text):
+	if rowNumber == 0:
+		posY = -2
+	elif rowNumber == 1:
+		posY = 8
+	elif rowNumber == 2:
+		posY = 18
+	elif rowNumber == 3:
+		posY = 28
+	elif rowNumber == 4:
+		posY = 38
+	elif rowNumber == 5:
+		posY = 48
+	else: # This display can only handle 6 lines, if rowNumber is bigger than 5, it goes to the first row.
+		posY = -2
+	
+	draw.text((100, posY), text, font = font, fill = 255)
 	
 def DrawBatteryStatus(batPercent):
 	batWidth = batPercent * width
@@ -110,6 +128,7 @@ ButtonB = PushButton(B_pin)
 percentage = 0.1
 while 1:
 	DrawBatteryStatus(percentage)
+	draw.rectangle((100, 0, width, 60), outline = 1, fill = 0)
 	if ButtonL.ButtonPressed():
 		ClearTextArea()
 		selectorPos += 1
