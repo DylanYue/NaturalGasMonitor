@@ -63,8 +63,9 @@ def ClearBatArea():
 	draw.rectangle((0, 61, width, height), outline = 0, fill = 0)
 
 	
-def DrawText(rowNumber, text):
+def DrawText(posX, rowNumber, text):
 	# The X position of text is 14
+	# posX is the X position of the text
 	# rowNumber is the on which row the text appears
 	# text is the text you want to display
 	if rowNumber == 0:
@@ -82,7 +83,7 @@ def DrawText(rowNumber, text):
 	else: # This display can only handle 6 lines, if rowNumber is bigger than 5, it goes to the first row.
 		posY = -2
 	
-	draw.text((14, posY), text, font = font, fill = 255)
+	draw.text((posX, posY), text, font = font, fill = 255)
 	
 def DrawStatus(rowNumber, text):
 	if rowNumber == 0:
@@ -129,9 +130,9 @@ percentage = 0.1
 while 1:
 	DrawBatteryStatus(percentage)
 	draw.rectangle((100, 0, width-1, 60), outline = 1, fill = 0)
-	DrawText(0, "Setting")
-	DrawText(1, "Wifi Setting")
-	DrawText(2, "Battery Setting")
+	DrawText(14, 0, "Setting")
+	DrawText(14, 1, "Wifi Setting")
+	DrawText(14, 2, "Battery Setting")
 	PlaceSelector(1)
 	DrawStatus(0,"Wifi")
 	if ButtonL.ButtonPressed():
