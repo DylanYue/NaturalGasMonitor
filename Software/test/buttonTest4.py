@@ -129,24 +129,24 @@ ButtonB = PushButton(B_pin)
 percentage = 0.1
 while 1:
 	DrawBatteryStatus(percentage)
-	draw.rectangle((100, 0, width-1, 60), outline = 1, fill = 0)
+	draw.rectangle((100, 0, width-1, 60), outline = 0, fill = 0)
 	DrawText(14, 0, "Setting")
 	DrawText(14, 1, "Wifi Setting")
-	DrawText(14, 2, "Battery Setting")
+	DrawText(14, 2, "Battery")
 	PlaceSelector(1)
 	DrawStatus(0,"Wifi")
 	if ButtonL.ButtonPressed():
 		ClearTextArea()
 		selectorPos += 1
 		PlaceSelector(selectorPos)
-		DrawText(2, "Left button");
+		DrawText(14, 2, "Left button");
 	else:
 		pass
 		
 	if ButtonA.ButtonPressed():
 		ClearTextArea()
 		percentage += 0.05
-		DrawText(5, "A button");
+		DrawText(14, 5, "A button");
 	else:
 		pass
 	RefreshDisplay()
