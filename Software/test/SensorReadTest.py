@@ -12,7 +12,7 @@ import Adafruit_MCP3008
 
 # Software SPI configuration:
 CLK  = 18
-MISO = 16
+MISO = 23
 MOSI = 24
 CS   = 25
 mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
@@ -30,7 +30,7 @@ print('-' * 57)
 # Main program loop.
 while True:
     # Read all the ADC channel values in a list.
-	values = mcp.read_adc_difference(0)
+	values = mcp.read_adc(0)
     # Print the ADC values.
 	print values
     # Pause for half a second.
