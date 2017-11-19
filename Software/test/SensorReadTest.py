@@ -36,7 +36,7 @@ while True:
 	pressureMPa = (rawVolt - 0.5) / 4.0
 	pressureKPa = pressureMPa * 1000
 	
-	valueString = str(datetime.time().now()) + "," + str(pressureKPa) + '\n'
+	valueString = str(datetime.now().time()) + "," + str(pressureKPa) + '\n'
 	print valueString
 	print rawValue
 	print rawVolt
