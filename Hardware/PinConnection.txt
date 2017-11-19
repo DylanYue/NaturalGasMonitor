@@ -1,0 +1,16 @@
+OLED buttons:
+
+L_pin = 27 
+R_pin = 23 
+C_pin = 4 
+U_pin = 17 
+D_pin = 22 
+A_pin = 5 
+B_pin = 6 
+
+MCP3008:
+
+CLK = 18
+DOUT = 16
+DIN = 24
+CSSHDN = 25

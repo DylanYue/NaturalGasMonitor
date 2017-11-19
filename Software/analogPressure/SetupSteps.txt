@@ -1,0 +1,4 @@
+https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/mcp3008
+
+1. Install software SPI
+2. Install Adafruit MCP3008 Python library (https://github.com/adafruit/Adafruit_Python_MCP3008)
