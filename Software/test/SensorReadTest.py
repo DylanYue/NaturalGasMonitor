@@ -16,7 +16,7 @@ CS   = 25
 mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
 # Reference voltage is 5 volts.
-refVolt = 5 
+refVolt = 5.0
 
 # Initialize file and get ready to record.
 filename = str(datetime.now())
@@ -31,10 +31,10 @@ with open(filepath, "w") as f:
 # Main program loop.
 while True:
 
-	rawValue = mcp.read_adc(0)
-	rawVolt = rawValue * refVolt / 1024
-	pressureMPa = (rawVolt - 0.5) / 4.0
-	pressureKPa = pressureMPa * 1000
+	float(rawValue) = mcp.read_adc(0)
+	float(rawVolt) = rawValue * refVolt / 1024
+	float(pressureMPa) = (rawVolt - 0.5) / 4.0
+	float(pressureKPa) = pressureMPa * 1000
 	
 	valueString = str(datetime.now().time()) + "," + str(pressureKPa) + '\n'
 	print valueString
