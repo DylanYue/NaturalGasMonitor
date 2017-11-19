@@ -1,4 +1,5 @@
 """ This code runs the data acquisition and write to a file endlessly.
+	data is stored under data folder
 	Author: Dingjun Yue
 	Date: Nov/2017
 """
@@ -38,11 +39,7 @@ while True:
 	pressureKPa = pressureMPa * 1000.0
 	
 	valueString = str(datetime.now().time()) + "," + str(pressureKPa) + '\n'
-	print rawValue
-	print floatRaw
-	print rawVolt
-	print pressureMPa
-	print pressureKPa
+
 	with open(filepath, "a") as f:
 		f.write(valueString)
 
