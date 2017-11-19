@@ -36,7 +36,7 @@ while True:
 	pressureMPa = (rawVolt - 0.5) / 4.0
 	pressureKPa = pressureMPa * 1000
 	
-	valueString = str(datetime.now()) + "," + pressureKPa + '\n'
+	valueString = str(datetime.now()) + "," + str(pressureKPa) + '\n'
 	with open(filepath, "a") as f:
 		f.write(valueString)
 
