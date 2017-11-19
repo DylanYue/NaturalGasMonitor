@@ -24,7 +24,7 @@ here = os.path.dirname(os.path.realpath(__file__))
 subdir = "data"
 filepath = os.path.join(here, subdir, filename)
 
-with open(filepath, "a") as f:
+with open(filepath, "w") as f:
         f.write("Time" + ',' + "Pressure(KPa)" + '\n')
 		
 
