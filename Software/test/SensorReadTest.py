@@ -38,10 +38,11 @@ while True:
 	pressureKPa = pressureMPa * 1000.0
 	
 	valueString = str(datetime.now().time()) + "," + str(pressureKPa) + '\n'
-	print valueString
 	print rawValue
+	print floatRaw
 	print rawVolt
 	print pressureMPa
+	print pressureKPa
 	with open(filepath, "a") as f:
 		f.write(valueString)
 
