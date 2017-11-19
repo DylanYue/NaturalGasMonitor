@@ -11,16 +11,16 @@ import Adafruit_MCP3008
 
 
 # Software SPI configuration:
-# CLK  = 18
-# MISO = 16
-# MOSI = 24
-# CS   = 25
-# mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
+CLK  = 18
+MISO = 16
+MOSI = 24
+CS   = 25
+mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
 # Hardware SPI configuration:
-SPI_PORT   = 0
-SPI_DEVICE = 0
-mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
+# SPI_PORT   = 0
+# SPI_DEVICE = 0
+# mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 
 
 print('Reading MCP3008 values, press Ctrl-C to quit...')
@@ -30,7 +30,7 @@ print('-' * 57)
 # Main program loop.
 while True:
     # Read all the ADC channel values in a list.
-	values = mcp.read_adc(0)
+	values = mcp.read_adc(0) * 5 /1024
     # Print the ADC values.
 	print values
     # Pause for half a second.
