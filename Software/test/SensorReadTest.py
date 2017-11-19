@@ -5,34 +5,39 @@
 
 import time
 import Adafruit_MCP3008
+import os
+from datetime import datetime
 
-
-# Software SPI configuration:
+# Software SPI configuration: Initialize ADC MCP3008
 CLK  = 18
 MISO = 16
 MOSI = 24
 CS   = 25
 mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
-# Hardware SPI configuration:
-# SPI_PORT   = 0
-# SPI_DEVICE = 0
-# mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
+# Reference voltage is 5 volts.
+refVolt = 5 
 
+# Initialize file and get ready to record.
+filename = str(datetime.now())
+here = os.path.dirname(os.path.realpath(__file__))
+subdir = "data"
+filepath = os.path.join(here, subdir, filename)
 
-print('Reading MCP3008 values, press Ctrl-C to quit...')
-# Print nice channel column headers.
-print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} | {4:>4} | {5:>4} | {6:>4} | {7:>4} |'.format(*range(8)))
-print('-' * 57)
+with open(filepath, "a") as f:
+        f.write("Time" + ',' + "Pressure(KPa)" + '\n')
+		
+
 # Main program loop.
 while True:
-    # Read all the ADC channel values in a list.
-	values = [0]*8
-	for i in range(8):
-        # The read_adc function will get the value of the specified channel (0-7).
-		values[i] = mcp.read_adc(i)
-    # Print the ADC values.
-	print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} | {4:>4} | {5:>4} | {6:>4} | {7:>4} |'.format(*values))
-    # Print the ADC values.
-    # Pause for half a second.
-	time.sleep(0.5)
+
+	rawValue = mcp.read_adc(i)
+	rawVolt = rawValue * refVolt / 1024
+	pressureMPa = (rawVolt - 0.5) / 4.0
+	pressureKPa = pressureMPa * 1000
+	
+	valueString = str(datetime.now()) + "," + pressureKPa + '\n'
+	with open(filepath, "a") as f:
+		f.write(valueString)
+
+	time.sleep(0.33)
