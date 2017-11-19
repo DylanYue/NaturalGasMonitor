@@ -32,6 +32,6 @@ while True:
     # Read all the ADC channel values in a list.
 	values = mcp.read_adc(0) * (4.0/1023.0) / 4.0
     # Print the ADC values.
-	print(values)
+	print values
     # Pause for half a second.
     time.sleep(0.5)
