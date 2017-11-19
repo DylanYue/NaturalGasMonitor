@@ -33,9 +33,9 @@ while True:
 
 	rawValue = mcp.read_adc(0)
 	floatRaw = float(rawValue)
-	float(rawVolt) = rawValue * refVolt / 1024
+	rawVolt = floatRaw * refVolt / 1024.0
 	float(pressureMPa) = (rawVolt - 0.5) / 4.0
-	float(pressureKPa) = pressureMPa * 1000
+	float(pressureKPa) = pressureMPa * 1000.0
 	
 	valueString = str(datetime.now().time()) + "," + str(pressureKPa) + '\n'
 	print valueString
