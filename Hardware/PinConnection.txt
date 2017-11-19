@@ -8,9 +8,16 @@ D_pin = 22
 A_pin = 5 
 B_pin = 6 
 
-MCP3008:
+MCP3008_Software_SPI:
 
 CLK = 18
 DOUT = 16
 DIN = 24
 CSSHDN = 25
+
+MCP3008_Hardware_SPI:
+
+CLK -> SCLK -> BCM 11
+DOUT -> MISO -> BCM 9
+DIN -> MOSI -> BCM 20
+CS/SHDN -> CE0 -> BCM 8
