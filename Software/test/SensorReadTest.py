@@ -31,7 +31,8 @@ with open(filepath, "w") as f:
 # Main program loop.
 while True:
 
-	float(rawValue) = mcp.read_adc(0)
+	rawValue = mcp.read_adc(0)
+	floatRaw = float(rawValue)
 	float(rawVolt) = rawValue * refVolt / 1024
 	float(pressureMPa) = (rawVolt - 0.5) / 4.0
 	float(pressureKPa) = pressureMPa * 1000
