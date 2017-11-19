@@ -30,7 +30,7 @@ print('-' * 57)
 # Main program loop.
 while True:
     # Read all the ADC channel values in a list.
-	values = mcp.read_adc(0) * 5 /1024
+	values = mcp.read_adc_difference(0)
     # Print the ADC values.
 	print values
     # Pause for half a second.
