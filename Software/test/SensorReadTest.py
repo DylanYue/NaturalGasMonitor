@@ -30,8 +30,11 @@ print('-' * 57)
 # Main program loop.
 while True:
     # Read all the ADC channel values in a list.
-	values = mcp.read_adc(0)
+	for i in range(8):
+        # The read_adc function will get the value of the specified channel (0-7).
+        values[i] = mcp.read_adc(i)
     # Print the ADC values.
-	print values
+    print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} | {4:>4} | {5:>4} | {6:>4} | {7:>4} |'.format(*values))
+    # Print the ADC values.
     # Pause for half a second.
 	time.sleep(0.5)
