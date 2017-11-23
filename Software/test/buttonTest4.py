@@ -256,7 +256,7 @@ class RecordingState(State):
     def on_button_pressed(self, selector_pos, button):
         if button == "B":
             return SensorState()
-		# return self
+		return self
 
 class Device(object):
 	
