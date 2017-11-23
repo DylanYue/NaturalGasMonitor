@@ -166,14 +166,91 @@ menuItems32 = menuListGenerator(menuLevel32)
 menuItems42 = menuListGenerator(menuLevel42)
 menuItems52 = menuListGenerator(menuLevel52)
 
+#------------------------------	State Machine Code-----------------------------------------------------
+class State(object):
+    
+    def on_event(self, event):
+        pass
+    
+    def __repr__(self):
+        return self.__str__()
+    
+    def __str__(self):
+        # Returns the name of the state.
+        return self.__class__.__name__
+
+class InitialState(State):
+    # The state which indicates that there are limited device capabilities
+    def __init__(self):
+		ClearTextArea()
+		DrawText(14, 0, "Sensor")
+		DrawText(14, 1, "Wifi")
+		DrawText(14, 2, "Battery")
+		DrawText(14, 3, "Time")
+		DrawText(14, 4, "SD Card")
+        
+    def on_button_pressed(self, selector_pos, button):
+        if selector_pos == 0 and button == "A":
+            return SensorState()
+        elif selector_pos == 1 and button == "A":
+            return WifiState()
+        elif selector_pos == 2 and button == "A":
+            return BatteryState()
+        elif selector_pos == 3 and button == "A":
+            return TimeState()
+        elif selector_pos == 4 and button == "A":
+            return SDCardState()
+        else:
+            return self
+        
+    def display(self):
+        print("Sensor")
+        print("Wifi")
+        print("Battery")
+        print("Time")
+        print("SD Card")
+    
+class SensorState(State):
+    # The state which indicates that there are no limitations on device capabilities
+    
+    def __init__(self):
+        self.display_message = "Start Record\nLive Reading"
+        print(self.display_message)
+        
+    def on_button_pressed(self, selector_pos, button):
+        if selector_pos == 0 and button == "A":
+            return RecordingState()
+        elif selector_pos == 1 and button == "A":
+            return LiveReadingState()
+        elif button == "B":
+            return InitialState()
+        else:
+            return self
+
+class RecordingState(State):
+    def __init__(self):
+        self.display_message = "Recording"
+        print(self.display_message)
+    
+    def on_button_pressed(self, selector_pos, button):
+        if button == "B":
+            return SensorState()
+        else:
+            return self
+class Device(object):
+    
+    def __init__(self):
+        self.state = InitialState()
+    
+    def on_button_pressed(self, selector_pos, button):
+        self.state = self.state.on_button_pressed(selector_pos, button)
+#--------------------------------------------------------------------------------#
+
+NGR = Device()
+
 percentage = 0.1
 while 1:
-	DrawBatteryStatus(percentage)
-	draw.rectangle((100, 0, width-1, 60), outline = 0, fill = 0)
-	DrawText(14, 0, "Setting")
-	DrawText(14, 1, "Wifi Setting")
-	DrawText(14, 2, "Battery")
-	PlaceSelector(1)
+
 	DrawStatus(0,"Wifi")
 	if ButtonL.ButtonPressed():
 		ClearTextArea()
