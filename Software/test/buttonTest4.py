@@ -203,7 +203,6 @@ class InitialState(State):
             return TimeState()
         if selector_pos == 4 and button == "A":
             return SDCardState()
-
 		return self
         
     def display(self):
@@ -228,7 +227,6 @@ class SensorState(State):
             return LiveReadingState()
         if button == "B":
             return InitialState()
-
 		return self
 
 class RecordingState(State):
