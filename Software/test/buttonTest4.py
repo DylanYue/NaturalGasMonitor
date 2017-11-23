@@ -48,7 +48,7 @@ draw.rectangle((0,0,width,height), outline = 0, fill = 0)
 # Setup default font, other truetype fonts can be used as long as they are in the same folder of the python script
 font = ImageFont.load_default()
 
-
+#---------------------------------------OLED Functions-----------------------------------------#
 def RefreshDisplay():
 	disp.image(image)
 	disp.display()
@@ -119,7 +119,7 @@ def SelectorPosConditioner (rawPos):
 
 def PlaceSelector(rowNumber):
 	DrawText(0, SelectorPosConditioner(rowNumber), "->")
-
+#--------------------------------------END OLED Functions-----------------------------------------------#
 
 # Initialize Button Objects			
 ButtonL = PushButton(L_pin)
@@ -292,9 +292,8 @@ while 1:
 		pass
 		
 	if ButtonA.ButtonPressed():
-		ClearTextArea()
-		percentage += 0.05
-		DrawText(14, 5, "A button");
+		NGR.state.on_button_pressed(Arrow.on_button(), "A")
+		
 	else:
 		pass
 	RefreshDisplay()
