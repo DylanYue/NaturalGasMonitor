@@ -270,6 +270,11 @@ class Selector(object):
 		self.selectorPos += 1
 		PlaceSelector(self.selectorPos)
 		
+	def selector_reset(self):
+		ClearSelector()
+		self.selectorPos = 0
+		PlaceSelector(self.selectorPos)
+		
 	def on_button(self):
 		return self.selectorPos % 6
 
@@ -293,12 +298,14 @@ while 1:
 		pass
 		
 	if ButtonA.ButtonPressed():
-		NGR.state.on_button_pressed(Arrow.on_button(), "A")	
+		NGR.state.on_button_pressed(Arrow.on_button(), "A")
+		Arrow.selector_reset()
 	else:
 		pass
 	
 	if ButtonB.ButtonPressed():
 		NGR.state.on_button_pressed(Arrow.on_button(), "B")
+		Arrow.selector_reset()
 	else:
 		pass
 		
