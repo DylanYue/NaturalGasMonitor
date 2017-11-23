@@ -56,8 +56,11 @@ def RefreshDisplay():
 def ClearScreen():
 	draw.rectangle((0, 0, width, height), outline = 0, fill = 0)
 
+def ClearSelector():
+	draw.rectangle((0, 0, 13, 60), outline = 0, fill = 0)
+	
 def ClearTextArea():
-	draw.rectangle((0, 0, width, 60), outline = 0, fill = 0)
+	draw.rectangle((14, 0, width, 60), outline = 0, fill = 0)
 
 def ClearBatArea():
 	draw.rectangle((0, 61, width, height), outline = 0, fill = 0)
@@ -252,14 +255,17 @@ class Device(object):
 class Selector(object):
 	# Selector class to store the information of the selector
 	def __init__(self, selectorPos):
+		ClearSelector()
 		self.selectorPos = selectorPos
 		PlaceSelector(self.selectorPos)
 		
 	def move_up(self):
+		ClearSelector()
 		self.selectorPos -= 1
 		PlaceSelector(self.selectorPos)
 		
 	def move_down(self):
+		ClearSelector()
 		self.selectorPos += 1
 		PlaceSelector(self.selectorPos)
 		
