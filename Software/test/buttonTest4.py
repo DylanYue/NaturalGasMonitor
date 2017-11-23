@@ -193,17 +193,20 @@ class InitialState(State):
 		DrawText(14, 4, "SD Card")
         
     def on_button_pressed(self, selector_pos, button):
-        if selector_pos == 0 and button == "A":
-            return SensorState()
-        if selector_pos == 1 and button == "A":
-            return WifiState()
-        if selector_pos == 2 and button == "A":
-            return BatteryState()
-        if selector_pos == 3 and button == "A":
-            return TimeState()
-        if selector_pos == 4 and button == "A":
-            return SDCardState()
-		return self
+		if selectro_pos == 0 and button == "A":
+			return SensorState()
+
+        # if selector_pos == 0 and button == "A":
+            # return SensorState()
+        # if selector_pos == 1 and button == "A":
+            # return WifiState()
+        # if selector_pos == 2 and button == "A":
+            # return BatteryState()
+        # if selector_pos == 3 and button == "A":
+            # return TimeState()
+        # if selector_pos == 4 and button == "A":
+            # return SDCardState()
+		# return self
         
     def display(self):
         print("Sensor")
@@ -227,7 +230,7 @@ class SensorState(State):
             return LiveReadingState()
         if button == "B":
             return InitialState()
-		return self
+		# return self
 
 class RecordingState(State):
     def __init__(self):
