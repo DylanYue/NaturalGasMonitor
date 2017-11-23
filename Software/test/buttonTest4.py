@@ -193,7 +193,7 @@ class InitialState(State):
 		DrawText(14, 4, "SD Card")
         
     def on_button_pressed(self, selector_pos, button):
-		if selectro_pos == 0 and button == "A":
+		if selector_pos == 0 and button == "A":
 			return SensorState()
 
         # if selector_pos == 0 and button == "A":
