@@ -232,17 +232,17 @@ class SensorState(State):
 		DrawText(14, 1, "Live Reading")
         
     def on_button_pressed(self, selector_pos, button):
-        if selector_pos == 0 and button == "A":
-            return RecordingState()
+		if selector_pos == 0 and button == "A":
+			return RecordingState()
 		else:
 			pass
         
 		if selector_pos == 1 and button == "A":
-            return LiveReadingState()
+			return LiveReadingState()
 		else:
 			pass
-       
-	   if button == "B":
+
+		if button == "B":
             return InitialState()
 		else:
 			pass
