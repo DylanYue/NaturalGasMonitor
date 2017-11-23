@@ -126,6 +126,46 @@ ButtonD = PushButton(D_pin)
 ButtonA = PushButton(A_pin)
 ButtonB = PushButton(B_pin)
 
+# List of menu ids and menu titles for each menu level
+menuLevel1 = [[1, "Sensor"], [2, "Wifi"], [3, "Battery"], [4, "Time"], [5, "SD Card"]]
+menuLevel12 = [[11, "Start Rec"], [12, "Stop Rec"], [13, "Calibrate"], [14, "Live Reading"]]
+menuLevel22 = [[21, "Turn On"], [22, "Turn Off"]]
+menuLevel32 = [[31, "Display Capacity"]]
+menuLevel42 = [[41, "Set Time"], [42, "Display"]]
+menuLevel52 = [[51, "Capacity"]]
+
+class MenuItem(object):
+    
+    def __init__(self, menuID, menuTitle):
+        self.menuID = menuID
+        self.menuTitle = menuTitle
+
+    def stringForDisplay(self):
+        return self.menuTitle
+    
+    def getMenuID(self):
+        return self.menuID
+    
+    # This method returns the menu's location on the screen (1, 2, 3...)
+    def getMenuLocation(self):
+        return (self.menuID % 10)
+    
+# Initialize menu items
+
+def menuListGenerator(menuLevelList):
+    menuItems = []
+    for menu in menuLevelList:
+        menuItem = MenuItem(menu[0], menu[1])
+        menuItems.append(menuItem)
+    return menuItems
+
+menuItems1 = menuListGenerator(menuLevel1)
+menuItems12 = menuListGenerator(menuLevel12)
+menuItems22 = menuListGenerator(menuLevel22)
+menuItems32 = menuListGenerator(menuLevel32)
+menuItems42 = menuListGenerator(menuLevel42)
+menuItems52 = menuListGenerator(menuLevel52)
+
 percentage = 0.1
 while 1:
 	DrawBatteryStatus(percentage)
