@@ -241,12 +241,12 @@ class SensorState(State):
 			return LiveReadingState()
 		else:
 			pass
-
+			
 		if button == "B":
-            return InitialState()
+			return InitialState()
 		else:
 			pass
-		
+			
 		return self
 
 
