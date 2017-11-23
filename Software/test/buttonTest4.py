@@ -173,7 +173,12 @@ menuItems52 = menuListGenerator(menuLevel52)
 class State(object):
 	def __init__(self):
 		pass
-
+	
+	def __repr__(self):
+		return self.__str__()
+	
+	def __str__(self):
+		return self.__class__.__name__
 
 class InitialState(State):
     # The state which indicates that there are limited device capabilities
