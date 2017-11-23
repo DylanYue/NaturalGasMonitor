@@ -241,6 +241,7 @@ class RecordingState(State):
             return SensorState()
         else:
             return self
+			
 class Device(object):
     
     def __init__(self):
@@ -292,8 +293,13 @@ while 1:
 		pass
 		
 	if ButtonA.ButtonPressed():
-		NGR.state.on_button_pressed(Arrow.on_button(), "A")
-		
+		NGR.state.on_button_pressed(Arrow.on_button(), "A")	
 	else:
 		pass
+	
+	if ButtonB.ButtonPressed():
+		NGR.state.on_button_pressed(Arrow.on_button(), "B")
+	else:
+		pass
+		
 	RefreshDisplay()
