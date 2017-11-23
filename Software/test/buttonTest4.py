@@ -297,15 +297,18 @@ while 1:
 	else:
 		pass
 		
+	if ButtonD.ButtonPressed():
+		Arrow.move_down()
+	else:
+		pass
+		
 	if ButtonA.ButtonPressed():
 		NGR.state.on_button_pressed(Arrow.on_button(), "A")
-		Arrow.selector_reset()
 	else:
 		pass
 	
 	if ButtonB.ButtonPressed():
 		NGR.state.on_button_pressed(Arrow.on_button(), "B")
-		Arrow.selector_reset()
 	else:
 		pass
 		
