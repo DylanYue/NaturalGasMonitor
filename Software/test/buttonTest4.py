@@ -171,16 +171,9 @@ menuItems52 = menuListGenerator(menuLevel52)
 
 #------------------------------	State Machine Code-----------------------------------------------------
 class State(object):
-    
-    def on_event(self, event):
-        pass
-    
-    def __repr__(self):
-        return self.__str__()
-    
-    def __str__(self):
-        # Returns the name of the state.
-        return self.__class__.__name__
+	def __init__(self):
+		pass
+
 
 class InitialState(State):
     # The state which indicates that there are limited device capabilities
@@ -308,6 +301,7 @@ NGR = Device()
 Arrow = Selector(0)
 
 percentage = 0.1
+
 while 1:
 
 	DrawStatus(0,"Wifi")
