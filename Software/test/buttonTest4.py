@@ -260,6 +260,30 @@ class RecordingState(State):
 			pass
 		return self
 
+class WifiState(State):
+	def __init__(self):
+		ClearTextArea()
+		DrawText(14, 0, "Turn on")
+		DrawText(14, 1, "Turn off")
+	
+	def on_button_pressed(self, selector_pos, button):
+		if button == "B":
+			return InitialState()
+		else:
+			pass
+			
+		if selector_pos == 0 and button == "A":
+			return WifiOnState()
+		else:
+			pass
+		
+		if selector_pos == 1 and button == "A":
+			return WifiOffState()
+		else:
+			pass
+		
+		return self
+
 class Device(object):
 	
 	def __init__(self):
