@@ -254,12 +254,11 @@ class RecordingState(State):
 		DrawText(14, 0, "Recording...")
 
     def on_button_pressed(self, selector_pos, button):
-        if button == "B":
-            return SensorState()
+		if button == "B":
+			return SensorState()
 		else:
 			pass
 		return self
-
 
 class Device(object):
 	
