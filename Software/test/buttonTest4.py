@@ -183,6 +183,7 @@ class State(object):
 class InitialState(State):
     # The state which indicates that there are limited device capabilities
     def __init__(self):
+	
 		ClearTextArea()
 		DrawText(14, 0, "Sensor")
 		DrawText(14, 1, "Wifi")
