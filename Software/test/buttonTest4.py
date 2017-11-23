@@ -265,7 +265,7 @@ class Device(object):
 	def __init__(self):
 		self.state = InitialState()
 	
-	def on_button_pressed(self, selector_pos, button)
+	def on_button_pressed(self, selector_pos, button):
 		self.state = self.state.on_button_pressed(selector_pos, button)
 
 #--------------------------------------------------------------------------------#
