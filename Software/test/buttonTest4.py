@@ -259,14 +259,15 @@ class RecordingState(State):
         if button == "B":
             return SensorState()
 		# return self
-			
+
 class Device(object):
-    
-    def __init__(self):
-        self.state = InitialState()
-    
-    def on_button_pressed(self, selector_pos, button):
-        self.state = self.state.on_button_pressed(selector_pos, button)
+	
+	def __init__(self):
+		self.state = InitialState()
+	
+	def on_button_pressed(self, selector_pos, button)
+		self.state = self.state.on_button_pressed(selector_pos, button)
+
 #--------------------------------------------------------------------------------#
 
 #-----------------------------Selector Class-------------------------------------#
@@ -293,7 +294,7 @@ class Selector(object):
 		self.selectorPos = 0
 		PlaceSelector(self.selectorPos)
 		
-	def on_button(self):
+	def current_pos(self):
 		return self.selectorPos % 6
 
 
@@ -321,13 +322,13 @@ while 1:
 		pass
 		
 	if ButtonA.ButtonPressed():
-		NGR.state.on_button_pressed(Arrow.on_button(), "A")
+		NGR.state.on_button_pressed(Arrow.current_pos(), "A")
 	else:
 		pass
 	
 	if ButtonB.ButtonPressed():
-		NGR.state.on_button_pressed(Arrow.on_button(), "B")
+		NGR.state.on_button_pressed(Arrow.current_pos(), "B")
 	else:
 		pass
-	print NGR.state	
+	print NGR.state
 	RefreshDisplay()
