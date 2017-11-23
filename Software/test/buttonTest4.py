@@ -214,8 +214,9 @@ class SensorState(State):
     # The state which indicates that there are no limitations on device capabilities
     
     def __init__(self):
-        self.display_message = "Start Record\nLive Reading"
-        print(self.display_message)
+		ClearTextArea()
+		DrawText(14, 0, "Start Record")
+		DrawText(14, 1, "Live Reading")
         
     def on_button_pressed(self, selector_pos, button):
         if selector_pos == 0 and button == "A":
@@ -229,9 +230,9 @@ class SensorState(State):
 
 class RecordingState(State):
     def __init__(self):
-        self.display_message = "Recording"
-        print(self.display_message)
-    
+		ClearTextArea()
+		DrawText(14, 0, "Recording...")
+
     def on_button_pressed(self, selector_pos, button):
         if button == "B":
             return SensorState()
@@ -246,17 +247,41 @@ class Device(object):
         self.state = self.state.on_button_pressed(selector_pos, button)
 #--------------------------------------------------------------------------------#
 
+#-----------------------------Selector Class-------------------------------------#
+
+class Selector(object):
+	# Selector class to store the information of the selector
+	def __init__(self, selectorPos):
+		self.selectorPos = selectorPos
+		PlaceSelector(self.selectorPos)
+		
+	def move_up(self):
+		self.selectorPos -= 1
+		PlaceSelector(self.selectorPos)
+		
+	def move_down(self):
+		self.selectorPos += 1
+		PlaceSelector(self.selectorPos)
+		
+	def on_button(self):
+		return self.selectorPos % 6
+
+
+
+	
+	
+	
+	
+	
 NGR = Device()
+Arrow = Selector(0)
 
 percentage = 0.1
 while 1:
 
 	DrawStatus(0,"Wifi")
-	if ButtonL.ButtonPressed():
-		ClearTextArea()
-		selectorPos += 1
-		PlaceSelector(selectorPos)
-		DrawText(14, 2, "Left button");
+	if ButtonU.ButtonPressed():
+		Arrow.move_up()
 	else:
 		pass
 		
