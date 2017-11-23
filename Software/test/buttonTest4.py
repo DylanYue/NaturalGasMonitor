@@ -234,11 +234,21 @@ class SensorState(State):
     def on_button_pressed(self, selector_pos, button):
         if selector_pos == 0 and button == "A":
             return RecordingState()
-        if selector_pos == 1 and button == "A":
+		else:
+			pass
+        
+		if selector_pos == 1 and button == "A":
             return LiveReadingState()
-        if button == "B":
+		else:
+			pass
+       
+	   if button == "B":
             return InitialState()
-		# return self
+		else:
+			pass
+		
+		return self
+
 
 class RecordingState(State):
     def __init__(self):
