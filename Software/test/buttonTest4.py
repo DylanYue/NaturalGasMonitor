@@ -309,7 +309,7 @@ percentage = 0.1
 
 while 1:
 
-	DrawStatus(0,"Wifi")
+	#DrawStatus(0,"Wifi")
 	if ButtonU.ButtonPressed():
 		Arrow.move_up()
 	else:
@@ -321,12 +321,12 @@ while 1:
 		pass
 		
 	if ButtonA.ButtonPressed():
-		NGR.state.on_button_pressed(Arrow.current_pos(), "A")
+		NGR.on_button_pressed(Arrow.current_pos(), "A")
 	else:
 		pass
 	
 	if ButtonB.ButtonPressed():
-		NGR.state.on_button_pressed(Arrow.current_pos(), "B")
+		NGR.on_button_pressed(Arrow.current_pos(), "B")
 	else:
 		pass
 	print(NGR.state)
