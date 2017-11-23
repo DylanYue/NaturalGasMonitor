@@ -195,16 +195,16 @@ class InitialState(State):
     def on_button_pressed(self, selector_pos, button):
         if selector_pos == 0 and button == "A":
             return SensorState()
-        elif selector_pos == 1 and button == "A":
+        if selector_pos == 1 and button == "A":
             return WifiState()
-        elif selector_pos == 2 and button == "A":
+        if selector_pos == 2 and button == "A":
             return BatteryState()
-        elif selector_pos == 3 and button == "A":
+        if selector_pos == 3 and button == "A":
             return TimeState()
-        elif selector_pos == 4 and button == "A":
+        if selector_pos == 4 and button == "A":
             return SDCardState()
-        else:
-            return self
+
+		return self
         
     def display(self):
         print("Sensor")
@@ -224,12 +224,12 @@ class SensorState(State):
     def on_button_pressed(self, selector_pos, button):
         if selector_pos == 0 and button == "A":
             return RecordingState()
-        elif selector_pos == 1 and button == "A":
+        if selector_pos == 1 and button == "A":
             return LiveReadingState()
-        elif button == "B":
+        if button == "B":
             return InitialState()
-        else:
-            return self
+
+		return self
 
 class RecordingState(State):
     def __init__(self):
@@ -239,8 +239,7 @@ class RecordingState(State):
     def on_button_pressed(self, selector_pos, button):
         if button == "B":
             return SensorState()
-        else:
-            return self
+		return self
 			
 class Device(object):
     
