@@ -329,5 +329,5 @@ while 1:
 		NGR.state.on_button_pressed(Arrow.on_button(), "B")
 	else:
 		pass
-		
+	print NGR.state	
 	RefreshDisplay()
