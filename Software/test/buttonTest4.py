@@ -405,7 +405,7 @@ while 1:
 	if NGR.state.recording:
 		InitializeFile()
 		KPa = ReadPressureKPa
-		dataString = str(datetime.now().time()) + "," + str(pressureKPa) + '\n'
+		dataString = str(datetime.now().time()) + "," + str(KPa) + '\n'
 		WriteDataToFile(dataString)
 		time.sleep(1/readFreq)
 		if ButtonB.ButtonPressed():
@@ -435,4 +435,4 @@ while 1:
 	else:
 		pass
 	print(NGR.state)
-	RefreshDisplay()
+	RefreshDisplay(
