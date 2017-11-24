@@ -356,6 +356,7 @@ class Selector(object):
 def InitializeFile():
 	# This function creates a file if one does not exist
 	# Name of the file is the current time and it's stored in the data folder.
+	global filePath, fileName
 	if filePath:
 		pass
 	else:
@@ -368,6 +369,7 @@ def InitializeFile():
 			f.write("Time" + "," + "Pressure(KPa)" + '\n')
 
 def WriteDataToFile(dataString):
+	global filePath
 	if filePath:
 		with open(filePath, "a") as f:
 			f.write(dataString)
@@ -383,6 +385,7 @@ def ReadChannel(channelNumber):
 	
 def ReadPressureKPa():
 	# This functions reads pressure sensor and returns KPa readings.
+	global sensorChannel
 	rawReading = ReadChannel(sensorChannel)
 	floatRaw = float(rawReading)
 	rawVolt = floatRaw * (refVolt) / 1024.0
