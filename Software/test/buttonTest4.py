@@ -404,7 +404,7 @@ while 1:
 	#DrawStatus(0,"Wifi")
 	if NGR.state.recording:
 		InitializeFile()
-		KPa = ReadPressureKPa
+		KPa = ReadPressureKPa()
 		dataString = str(datetime.now().time()) + "," + str(KPa) + '\n'
 		WriteDataToFile(dataString)
 		time.sleep(1/readFreq)
