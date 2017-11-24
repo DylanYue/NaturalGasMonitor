@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 
+import os
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
 
@@ -186,9 +187,8 @@ class InitialState(State):
 		ClearTextArea()
 		DrawText(14, 0, "Sensor")
 		DrawText(14, 1, "Wifi")
-		DrawText(14, 2, "Battery")
-		DrawText(14, 3, "Time")
-		DrawText(14, 4, "SD Card")
+		DrawText(14, 2, "Time")
+		DrawText(14, 3, "SD Card")
         
     def on_button_pressed(self, selector_pos, button):
 		if selector_pos == 0 and button == "A":
@@ -200,14 +200,10 @@ class InitialState(State):
 		else:
 			pass
 		if selector_pos == 2 and button == "A":
-			return BatteryState()
-		else:
-			pass
-		if selector_pos == 3 and button == "A":
 			return TimeState()
 		else:
 			pass
-		if selector_pos == 4 and button == "A":
+		if selector_pos == 3 and button == "A":
 			return SDCardState()
 		else:
 			pass
@@ -283,6 +279,32 @@ class WifiState(State):
 			pass
 		
 		return self
+		
+class TimeState(State):
+	
+	def __init__(self):
+		ClearTextArea()
+		DrawText(14, 0, "Set Time")
+	
+	def on_button_pressed(self, selector_pos, button):
+		if button == "B":
+			return InitialState()
+		else:
+			pass
+			
+		if selector_pos == 0 and button == "A":
+			return SetTimeState()
+		else:
+			pass
+		
+		return self
+		
+class SDCardState(State):
+	
+	def __init__(self):
+		self.total_capacity = os.system("df -h | awk 'NR==2{print $2; exit}'")
+		ClearTextArea()
+		DrawText(14, 0, self.total_capacity)
 
 class Device(object):
 	
