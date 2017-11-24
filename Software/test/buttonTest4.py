@@ -368,8 +368,8 @@ def InitializeFile():
 			f.write("Time" + "," + "Pressure(KPa)" + '\n')
 
 def WriteDataToFile(dataString):
-	if (global filePath):
-		with open(global filePath, "a") as f:
+	if (filePath):
+		with open(filePath, "a") as f:
 			f.write(dataString)
 	else:
 		InitializeFile()
@@ -383,9 +383,9 @@ def ReadChannel(channelNumber):
 	
 def ReadPressureKPa():
 	# This functions reads pressure sensor and returns KPa readings.
-	rawReading = ReadChannel(global sensorChannel)
+	rawReading = ReadChannel(sensorChannel)
 	floatRaw = float(rawReading)
-	rawVolt = floatRaw * (global refVolt) / 1024.0
+	rawVolt = floatRaw * (refVolt) / 1024.0
 	pressureMPa = (rawVolt) / 4.0
 	return (pressureMPa * 1000.0)
 	
