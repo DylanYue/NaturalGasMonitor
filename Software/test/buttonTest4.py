@@ -435,4 +435,4 @@ while 1:
 	else:
 		pass
 	print(NGR.state)
-	RefreshDisplay(
+	RefreshDisplay()
