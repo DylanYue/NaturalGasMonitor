@@ -251,9 +251,11 @@ class RecordingState(State):
 		DrawText(14, 0, "Recording...")
 
     def on_button_pressed(self, selector_pos, button):
+		global filePath
+		global fileName
 		if button == "B":
-			global filePath = None
-			global fileName = None
+			filePath = None
+			fileName = None
 			return SensorState()
 		else:
 			pass
