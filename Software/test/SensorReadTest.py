@@ -29,7 +29,7 @@ with open(filepath, "w") as f:
         f.write("Time" + "," + "Pressure(KPa)" + '\n')
 		
 
-# Main program loop.
+# Main program loop
 while True:
 
 	rawValue = mcp.read_adc(0)
