@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 
+import os
 from subprocess import check_output
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
