@@ -408,10 +408,6 @@ while 1:
 		dataString = str(datetime.now().time()) + "," + str(KPa) + '\n'
 		WriteDataToFile(dataString)
 		time.sleep(1/readFreq)
-		if ButtonB.ButtonPressed():
-			NGR.on_button_pressed(Arrow.current_pos(), "B")
-		else:
-			pass
 	else:
 		pass
 		
