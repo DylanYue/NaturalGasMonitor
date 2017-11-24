@@ -359,12 +359,12 @@ def InitializeFile():
 	if (filePath):
 		pass
 	else:
-		global fileName = str(datetime.now())
+		fileName = str(datetime.now())
 		here = os.path.dirname(os.path.realpath(__file__))
 		subdir = "data"
-		global filePath = os.path.join(here, subdir, filename)
+		filePath = os.path.join(here, subdir, filename)
 		# Write the column titles to the file
-		with open(global filePath, "w") as f:
+		with open(filePath, "w") as f:
 			f.write("Time" + "," + "Pressure(KPa)" + '\n')
 
 def WriteDataToFile(dataString):
