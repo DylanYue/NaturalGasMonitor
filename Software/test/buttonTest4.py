@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-import os
+from subprocess import check_output
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
 
@@ -302,7 +302,7 @@ class TimeState(State):
 class SDCardState(State):
 	
 	def __init__(self):
-		print os.system("df -h | awk 'NR==2{print $2; exit}'")
+		self.total_capacity = check_output('df -h | awk 'NR==2{print $2; exit}'').strip()
 		ClearTextArea()
 		DrawText(14, 0, self.total_capacity)
 
