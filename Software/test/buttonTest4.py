@@ -189,7 +189,7 @@ class InitialState(State):
 		DrawText(14, 0, "Sensor")
 		DrawText(14, 1, "Wifi")
 		DrawText(14, 2, "Time")
-		DrawText(14, 3, "SD Card")
+		# DrawText(14, 3, "SD Card")
         
     def on_button_pressed(self, selector_pos, button):
 		if selector_pos == 0 and button == "A":
@@ -204,10 +204,10 @@ class InitialState(State):
 			return TimeState()
 		else:
 			pass
-		if selector_pos == 3 and button == "A":
-			return SDCardState()
-		else:
-			pass
+		# if selector_pos == 3 and button == "A":
+			# return SDCardState()
+		# else:
+			# pass
 		
 		return self
         
@@ -300,12 +300,12 @@ class TimeState(State):
 		
 		return self
 		
-class SDCardState(State):
+# class SDCardState(State):
 	
-	def __init__(self):
-		self.total_capacity = check_output(["df -h", "|", "awk 'NR==2 {print $2; exit}'"])
-		ClearTextArea()
-		DrawText(14, 0, self.total_capacity)
+	# def __init__(self):
+		# #self.total_capacity = check_output(["df -h", "|", "awk 'NR==2 {print $2; exit}'"])
+		# ClearTextArea()
+		# DrawText(14, 0, self.total_capacity)
 
 class Device(object):
 	
