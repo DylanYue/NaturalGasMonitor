@@ -356,7 +356,7 @@ class Selector(object):
 def InitializeFile():
 	# This function creates a file if one does not exist
 	# Name of the file is the current time and it's stored in the data folder.
-	if (filePath):
+	if filePath:
 		pass
 	else:
 		fileName = str(datetime.now())
@@ -368,7 +368,7 @@ def InitializeFile():
 			f.write("Time" + "," + "Pressure(KPa)" + '\n')
 
 def WriteDataToFile(dataString):
-	if (filePath):
+	if filePath:
 		with open(filePath, "a") as f:
 			f.write(dataString)
 	else:
