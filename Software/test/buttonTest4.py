@@ -303,7 +303,7 @@ class TimeState(State):
 class SDCardState(State):
 	
 	def __init__(self):
-		self.total_capacity = os.system("df -h | awk 'NR==2 {print $2; exit}' | echo")
+		self.total_capacity = os.commands.getstatusoutput("df -h | awk 'NR==2 {print $2; exit}')[0]
 		ClearTextArea()
 		DrawText(14, 0, self.total_capacity)
 
