@@ -363,7 +363,7 @@ def InitializeFile():
 		fileName = str(datetime.now())
 		here = os.path.dirname(os.path.realpath(__file__))
 		subdir = "data"
-		filePath = os.path.join(here, subdir, filename)
+		filePath = os.path.join(here, subdir, fileName)
 		# Write the column titles to the file
 		with open(filePath, "w") as f:
 			f.write("Time" + "," + "Pressure(KPa)" + '\n')
