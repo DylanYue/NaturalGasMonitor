@@ -208,6 +208,8 @@ class InitialState(State):
 		return self # Don't forget to always return yourself :)
 
 	def repeat_action(self):
+	# The action that needs to be done in each class.
+	# Make sure to call this method in the main loop
 		pass
 
 class SensorState(State):
