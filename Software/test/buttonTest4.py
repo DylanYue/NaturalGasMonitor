@@ -167,7 +167,6 @@ def PlaceSelector(rowNumber):
 #------------------------------	State Machine Code-----------------------------------------------------
 class State(object):
 	def __init__(self):
-		self.recording = False
 		pass
 	
 	def __repr__(self):
@@ -181,7 +180,6 @@ class InitialState(State):
     def __init__(self):
 		# This displays the major functions whenever we transition into this state
 		ClearTextArea()
-		self.recording = False
 		DrawText(14, 0, "Sensor")
 		DrawText(14, 1, "Wifi")
 		DrawText(14, 2, "Time")
@@ -208,12 +206,14 @@ class InitialState(State):
 			# pass
 		
 		return self # Don't forget to always return yourself :)
+		
+	def repeat_action(self):
+		pass
 
 class SensorState(State):
     # This is the sensor state
     def __init__(self):
 		ClearTextArea()
-		self.recording = False
 		DrawText(14, 0, "Start Record")
 		DrawText(14, 1, "Live Reading")
         
@@ -234,13 +234,14 @@ class SensorState(State):
 			pass
 			
 		return self
-
+	
+	def repeat_action(self):
+		pass
 
 class RecordingState(State):
 	# This state handles all the data recording job.
     def __init__(self):
 		ClearTextArea()
-		self.recording = True
 		DrawText(14, 0, "Recording...")
 
     def on_button_pressed(self, selector_pos, button):
@@ -253,12 +254,19 @@ class RecordingState(State):
 		else:
 			pass
 		return self
+	
+	def repeat_action(self):
+		global readFreq
+		InitializeFile()
+		KPa = ReadPressureKPa()
+		dataString = str(datetime.now().time()) + "," + str(KPa) + '\n'
+		WriteDataToFile(dataString)
+		time.sleep(1/readFreq)
 
 class WifiState(State):
 	# You set wifi settings in this state.
 	def __init__(self):
 		ClearTextArea()
-		self.recording = False
 		DrawText(14, 0, "Turn on")
 		DrawText(14, 1, "Turn off")
 	
@@ -280,11 +288,13 @@ class WifiState(State):
 		
 		return self
 		
+	def repeat_action(self):
+		pass
+		
 class TimeState(State):
 	# You set times in this state.
 	def __init__(self):
 		ClearTextArea()
-		self.recording = False
 		DrawText(14, 0, "Set Time")
 	
 	def on_button_pressed(self, selector_pos, button):
@@ -299,6 +309,9 @@ class TimeState(State):
 			pass
 		
 		return self
+		
+	def repeat_action(self):
+		pass
 		
 # class SDCardState(State):
 	
@@ -450,19 +463,7 @@ percentage = 0.1
 while 1:
 
 	#DrawStatus(0,"Wifi")
-	if NGR.state.recording:
-		InitializeFile()
-		KPa = ReadPressureKPa()
-		dataString = str(datetime.now().time()) + "," + str(KPa) + '\n'
-		WriteDataToFile(dataString)
-		time.sleep(1/readFreq)
-		if ButtonB.ButtonPressed():
-			NGR.on_button_pressed(Arrow.current_pos(), "B")
-		else:
-			pass
-	else:
-		pass
-		
+	NGR.state.repeat_action() # Do the repeat action for each class first.
 	if ButtonU.ButtonPressed():
 		Arrow.move_up()
 	else:
