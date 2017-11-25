@@ -212,12 +212,12 @@ class InitialState(State):
 
 class SensorState(State):
     # This is the sensor state
-    def __init__(self):
+	def __init__(self):
 		ClearTextArea()
 		DrawText(14, 0, "Start Record")
 		DrawText(14, 1, "Live Reading")
         
-    def on_button_pressed(self, selector_pos, button):
+	def on_button_pressed(self, selector_pos, button):
 		if selector_pos == 0 and button == "A":
 			return RecordingState()
 		else:
@@ -240,11 +240,11 @@ class SensorState(State):
 
 class RecordingState(State):
 	# This state handles all the data recording job.
-    def __init__(self):
+	def __init__(self):
 		ClearTextArea()
 		DrawText(14, 0, "Recording...")
 
-    def on_button_pressed(self, selector_pos, button):
+	def on_button_pressed(self, selector_pos, button):
 		global filePath
 		global fileName
 		if button == "B":
