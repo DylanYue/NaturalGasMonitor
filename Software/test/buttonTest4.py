@@ -177,7 +177,7 @@ class State(object):
 
 class InitialState(State):
     # This is the initial state, displaying the main screen whent the program starts
-    def __init__(self):
+	def __init__(self):
 		# This displays the major functions whenever we transition into this state
 		ClearTextArea()
 		DrawText(14, 0, "Sensor")
@@ -185,7 +185,7 @@ class InitialState(State):
 		DrawText(14, 2, "Time")
 		# DrawText(14, 3, "SD Card")
         
-    def on_button_pressed(self, selector_pos, button):
+	def on_button_pressed(self, selector_pos, button):
 		# This function handles whenever there is a button press, either transition into another state,
 		# or stay the same.
 		if selector_pos == 0 and button == "A":
@@ -206,7 +206,7 @@ class InitialState(State):
 			# pass
 		
 		return self # Don't forget to always return yourself :)
-	
+
 	def repeat_action(self):
 		pass
 
