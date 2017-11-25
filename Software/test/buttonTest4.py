@@ -206,7 +206,7 @@ class InitialState(State):
 			# pass
 		
 		return self # Don't forget to always return yourself :)
-		
+	
 	def repeat_action(self):
 		pass
 
