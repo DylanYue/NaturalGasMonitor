@@ -60,13 +60,6 @@ fileName = None
 disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST)
 # Initialize MCP3008 software SPI
 mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
-# Initialize Button Objects			
-ButtonL = PushButton(L_pin)
-ButtonR = PushButton(R_pin)
-ButtonU = PushButton(U_pin)
-ButtonD = PushButton(D_pin)
-ButtonA = PushButton(A_pin)
-ButtonB = PushButton(B_pin)
 
 #--OLED Display Setup--------------------------------------------------#
 # Initialize library
@@ -443,6 +436,14 @@ def ReadPressureKPa():
 	
 NGR = Device()
 Arrow = Selector(0)
+
+# Initialize Button Objects			
+ButtonL = PushButton(L_pin)
+ButtonR = PushButton(R_pin)
+ButtonU = PushButton(U_pin)
+ButtonD = PushButton(D_pin)
+ButtonA = PushButton(A_pin)
+ButtonB = PushButton(B_pin)
 
 percentage = 0.1
 
