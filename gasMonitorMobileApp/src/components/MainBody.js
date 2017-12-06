@@ -10,7 +10,13 @@ import {
 
 import MainBodyNavigator from './MainBodyNavigator';
 
+
+
 class MainBody extends React.Component {
+    componentWillMount() {
+
+    }
+
     render() {
         return (
             <View style={styles.mainBody}>
@@ -20,8 +26,6 @@ class MainBody extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
 
 export default MainBody;

@@ -40,7 +40,7 @@ class Controller extends React.Component {
 
     refreshServerFiles() {
         console.log('refreshServerFiles');
-        fetch("http://10.145.241.99:3000/getAllFiles")
+        fetch("http://192.168.42.1:3000/getAllFiles")
             .then((response) => response.json())
             .then((responseJSON) => {
                 this.props.refreshServerFiles(responseJSON);
@@ -133,25 +133,22 @@ const styles = StyleSheet.create({
     },
     btnText: {
         textAlign: 'center',
-        fontSize: 80 / winSize.scale,
+        fontSize: 50 / winSize.scale,
         fontWeight: "bold"
     },
     operationToggle: {
         position: 'absolute',
         width: winSize.width / 2.2,
-        borderWidth: 1,
         bottom: 58
     },
     settingToggle: {
         position: 'absolute',
         width: winSize.width / 2.2,
-        borderWidth: 1,
         bottom: 58,
         right: 0
     },
     toggleBtn: {
         flex: 1,
-        borderWidth: 1,
         borderBottomWidth: 0,
     }
 });

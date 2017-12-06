@@ -14,7 +14,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchFileFromLocal, fetchFileFromServer} from '../../actions/index';
 import {removeDuplicate} from '../../utils/index';
-
 import {ANDROID_STORAGE_PATH} from '../../config/config'
 
 let winSize = Dimensions.get('window');
@@ -39,13 +38,17 @@ class TableContainer extends React.Component {
     }
 
     fetchServerFileList() {
-        fetch("http://10.145.241.99:3000/getAllFiles")
+        fetch("http://192.168.42.1:3000/getAllFiles")
             .then((response) => response.json())
             .then((responseJSON) => {
-                RNFS.readDir(ANDROID_STORAGE_PATH).then((files) => {
-                    let result = removeDuplicate(responseJSON, files);
-                    this.props.getServerFiles(result);
-                });
+                RNFS.readDir(ANDROID_STORAGE_PATH)
+                    .then((files) => {
+                        let result = removeDuplicate(responseJSON, files);
+                        this.props.getServerFiles(result);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             })
             .catch((error) => {
                 console.error(error);
@@ -53,17 +56,21 @@ class TableContainer extends React.Component {
     }
 
     fetchLocalFileList() {
-        RNFS.readDir(ANDROID_STORAGE_PATH).then((files) => {
-            var result = files.map(function (val) {
-                return {
-                    fileName: val.name,
-                    size: (val.size / 1000000).toFixed(2),
-                    birthtime: moment(val.mtime).format("YY-MM-DD HH:mm"),
-                    duration: "0.0",
-                };
+        RNFS.readDir(ANDROID_STORAGE_PATH)
+            .then((files) => {
+                var result = files.map(function (val) {
+                    return {
+                        fileName: val.name,
+                        size: (val.size / 1000000).toFixed(2),
+                        birthtime: moment(val.mtime).format("YY-MM-DD HH:mm"),
+                        duration: "0.0",
+                    };
+                });
+                this.props.getLocalFiles(result)
+            })
+            .catch((err) => {
+                console.log('fetch local file', err.message)
             });
-            this.props.getLocalFiles(result)
-        });
     }
 
     render() {
@@ -177,7 +184,7 @@ const styles = StyleSheet.create({
     },
     table_headerText: {
         textAlign: 'center',
-        fontSize: 60 / winSize.scale,
+        fontSize: 30 / winSize.scale,
     }
 });
 

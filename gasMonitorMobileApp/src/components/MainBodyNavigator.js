@@ -10,17 +10,18 @@ const LocalFile = () => (
     <TableContainer type={"local"}/>
 )
 const RootTabs = TabNavigator({
-    ListFile: {
-        screen: ListFile,
-        navigationOptions: {
-            tabBarLabel: '设备文件'
-        }
-    },
     SelectedFile: {
         screen: LocalFile,
         navigationOptions: {
-            tabBarLabel: '已转存文件'
+            tabBarLabel: '本地文件'
         }
+    },
+    ListFile: {
+        screen: ListFile,
+        navigationOptions:
+            {
+                tabBarLabel: '设备文件'
+            }
     }
 });
 

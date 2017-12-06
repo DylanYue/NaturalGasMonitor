@@ -1,1 +1,1 @@
-export const ANDROID_STORAGE_PATH = "/sdcard/Download/";
+export const ANDROID_STORAGE_PATH = "/sdcard/Download/NaturalGasMonitor/";

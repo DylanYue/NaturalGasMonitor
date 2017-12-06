@@ -56,7 +56,7 @@ class TableRow extends React.Component {
     }
 
     fetchAndSaveFile() {
-        fetch("http://10.145.241.99:3000/getFile/" + this.state.fileName)
+        fetch("http://192.168.42.1:3000/getFile/" + this.state.fileName)
             .then((response) => response.json())
             .then((responseJSON) => {
                 writeToAndroidFolder(responseJSON.file, responseJSON.result);
@@ -75,9 +75,10 @@ class TableRow extends React.Component {
                     return val.fileName != this.state.fileName;
                 });
                 this.props.clickRemove({serverFiles: this.props.files.serverFiles, localFiles: newLocalFiles});
-            }).catch((err) => {
-            console.log(err);
-        });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
 
@@ -122,8 +123,14 @@ function matchDispatchToProps(dispatch) {
 }
 
 
-async function writeToAndroidFolder(name, content) {
-    await RNFS.writeFile(ANDROID_STORAGE_PATH + name, content, 'utf8');
+function writeToAndroidFolder(name, content) {
+    RNFS.writeFile(ANDROID_STORAGE_PATH + name, content, 'utf8')
+        .then(() => {
+            console.log('file writen');
+        })
+        .catch((err) => {
+            console.log(err.message)
+        });
 }
 
 const styles = StyleSheet.create({
@@ -158,7 +165,7 @@ const styles = StyleSheet.create({
     },
     table_headerText: {
         textAlign: 'center',
-        fontSize: 50 / winSize.scale,
+        fontSize: 30 / winSize.scale,
     }
 });
 
