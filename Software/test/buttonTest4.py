@@ -188,7 +188,10 @@ def PlaceSetter(columnNumber):
 	DrawText(posX, 1, "^")
 #--------------------------------------END OLED Functions-----------------------------------------------#
 def add_years(d, year):
-	return d + timedelta(years = year)
+	try:
+		return d.replace(year = d.year + year)
+	except ValueError:
+		return d + (date(d.year + year, 1, 1) - date(d.year, 1, 1))
 
 def add_months(d, month):
 	mon_rel = relativedelta(months=month)
