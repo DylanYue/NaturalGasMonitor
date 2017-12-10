@@ -335,6 +335,25 @@ class RecordingState(State):
 		WriteDataToFile(dataString)
 		time.sleep(1/readFreq)
 
+class LiveReadingState(State):
+	# This is the live reading state, displays live sensor readings
+	def __init__(self):
+		ClearTextArea()
+		
+	def on_button_pressed(self, selector_pos, button):
+		if button == "B":
+			return SensorState()
+		else:
+			pass
+		return self
+		
+	def repeat_action(self):
+		ClearTextArea()
+		KPa = ReadPressureKPa()
+		displayString ="Current Reading: " + str(KPa) + " KPa"
+		DrawText(14, 0, displayString)
+	
+	
 class WifiState(State):
 	# You set wifi settings in this state.
 	def __init__(self):
