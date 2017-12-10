@@ -427,7 +427,7 @@ class SetTimeState(State):
 				return SetTimeState()
 			else:
 				os.system("sudo timedatectl set-ntp 0")
-				os.system("sudo timedatectl set-time " + self.now) 
+				os.system("sudo timedatectl set-time " + str(self.now)) 
 		else:
 			pass
 			
