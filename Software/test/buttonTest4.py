@@ -200,6 +200,16 @@ class InitialState(State):
 			return TimeState()
 		else:
 			pass
+			
+		if button == "U":
+			Arrow.move_up()
+		else:
+			pass
+			
+		if button == "D":
+			Arrow.move_down()
+		else:
+			pass
 		# if selector_pos == 3 and button == "A":
 			# return SDCardState()
 		# else:
@@ -317,30 +327,27 @@ class TimeState(State):
 
 class SetTimeState(State):
 	# You set times in this state.
-	
-	year = 0
-	month = 0
-	day = 0
-	hour = 0
-	minute = 0
-	second = 0
 	def __init__(self):
 		ClearTextArea()
-		now = datetime.now()
-		year = now.year
-		month = now.month
-		day = now.day
-		hour = now.hour
-		minute = now.minute
-		DrawText(14, 0, str(now))
-		DrawText(14, 1, str(second))
+		self.setterPosition = 0
+		self.now = datetime.now()
+		self.year = now.year
+		self.month = now.month
+		self.day = now.day
+		self.hour = now.hour
+		self.minute = now.minute
+		DrawText(14, 0, str(self.now))
 		
 	def on_button_pressed(self, selector_pos, button):
 		if button == "B":
 			return TimeState()
 		else:
 			pass
-			
+		
+		if button == "A":
+			return SetTimeState()
+		else:
+			pass
 		if selector_pos == 0 and button == "A":
 			return SetTimeState()
 		else:
@@ -502,12 +509,23 @@ while 1:
 	#DrawStatus(0,"Wifi")
 	NGR.state.repeat_action() # Do the repeat action for each class first.
 	if ButtonU.ButtonPressed():
+		NGR.on_button_pressed(Arrow.current_pos(), "U")
 		Arrow.move_up()
 	else:
 		pass
 		
 	if ButtonD.ButtonPressed():
-		Arrow.move_down()
+		NGR.on_button_pressed(Arrow.current_pos(), "D")
+	else:
+		pass
+		
+	if ButtonL.ButtonPressed():
+		NGR.on_button_pressed(Arrow.current_pos(), "L")
+	else:
+		pass
+		
+	if ButtonR.ButtonPressed():
+		NGR.on_button_pressed(Arrow.current_pos(), "R")
 	else:
 		pass
 		
