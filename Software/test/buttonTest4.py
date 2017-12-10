@@ -108,6 +108,10 @@ def ClearSetter():
 def ClearTextArea():
 	# This function clears only the text area (14, 0) to (width, 60)
 	draw.rectangle((14, 0, width, 60), outline = 0, fill = 0)
+	
+def ClearFirstRow():
+	# This function clears only the text area (14, 0) to (width, 60)
+	draw.rectangle((14, 0, width, 7), outline = 0, fill = 0)
 
 def ClearBatArea():
 	# This function clears only the battery status bar area (0, 61) to (width, height)
@@ -462,7 +466,7 @@ class SetTimeState(State):
 		return self
 		
 	def repeat_action(self):
-		ClearScreen()
+		ClearFirstRow()
 		#timeString = str(self.year)+'-'+str(self.month).rjust(2)+'-'+str(self.day).rjust(2)+' '+str(self.hour).rjust(2)+':'+str(self.minute).rjust(2)
 		DrawText(14, 0, str(self.now))
 		pass
