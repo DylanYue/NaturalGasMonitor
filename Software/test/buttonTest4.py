@@ -408,11 +408,12 @@ class SetTimeState(State):
 		ClearTextArea()
 		self.setterPosition = 0
 		self.now = datetime.now()
-		self.year = self.now.year
-		self.month = self.now.month
-		self.day = self.now.day
-		self.hour = self.now.hour
-		self.minute = self.now.minute
+		# self.year = self.now.year
+		# self.month = self.now.month
+		# self.day = self.now.day
+		# self.hour = self.now.hour
+		# self.minute = self.now.minute
+		self.time_changed = False
 		self.setter = Setter(self.setterPosition)
 		
 	def on_button_pressed(self, selector_pos, button):
@@ -422,7 +423,11 @@ class SetTimeState(State):
 			pass
 		
 		if button == "A":
-			return SetTimeState()
+			if not self.time_changed:
+				return SetTimeState()
+			else:
+				os.system("sudo timedatectl set-ntp 0")
+				os.system("sudo timedatectl set-time " + self.now) 
 		else:
 			pass
 			
@@ -437,6 +442,10 @@ class SetTimeState(State):
 			pass
 		
 		if button == "U":
+			if not self.time_changed:
+				self.time_changed = True
+			else:
+				pass
 			if self.setter.current_pos() == 0:
 				self.now = add_years(self.now, 1)
 			elif self.setter.current_pos() == 1:
@@ -451,6 +460,10 @@ class SetTimeState(State):
 			pass
 			
 		if button == "D":
+			if not self.time_changed:
+				self.time_changed = True
+			else:
+				pass
 			if self.setter.current_pos() == 0:
 				self.now = add_years(self.now, -1)
 			elif self.setter.current_pos() == 1:
