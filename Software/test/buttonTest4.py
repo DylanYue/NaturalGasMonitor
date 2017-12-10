@@ -388,7 +388,6 @@ class SetTimeState(State):
 		self.hour = self.now.hour
 		self.minute = self.now.minute
 		self.setter = Setter(0)
-		DrawText(14, 0, str(self.now))
 		
 	def on_button_pressed(self, selector_pos, button):
 		if button == "B":
@@ -414,6 +413,8 @@ class SetTimeState(State):
 		return self
 		
 	def repeat_action(self):
+		timeString = str(self.year)+'-'+str(self.month).rjust(2)+'-'+str(self.day).rjust(2)+' '+str(self.hour).rjust(2)+':'+str(self.minute).rjust(2)
+		DrawText(14, 0, timeString)
 		pass
 # class SDCardState(State):
 	
