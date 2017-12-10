@@ -387,7 +387,7 @@ class SetTimeState(State):
 		self.day = self.now.day
 		self.hour = self.now.hour
 		self.minute = self.now.minute
-		self.setter = Setter(0)
+		self.setter = Setter(self.setterPosition)
 		
 	def on_button_pressed(self, selector_pos, button):
 		if button == "B":
@@ -410,6 +410,33 @@ class SetTimeState(State):
 		else:
 			pass
 		
+		if button == "U":
+			if self.setter.current_pos == 0:
+				self.year += 1
+			elif self.setter.current_pos == 1:
+				self.month += 1
+			elif self.setter.current_pos == 2:
+				self.day += 1
+			elif self.setter.current_pos == 3:
+				self.hour += 1
+			elif self.setter.current_pos == 4:
+				self.minute += 1
+		else:
+			pass
+			
+		if button == "D":
+			if self.setter.current_pos == 0:
+				self.year -= 1
+			elif self.setter.current_pos == 1:
+				self.month -= 1
+			elif self.setter.current_pos == 2:
+				self.day -= 1
+			elif self.setter.current_pos == 3:
+				self.hour -= 1
+			elif self.setter.current_pos == 4:
+				self.minute -= 1
+		else:
+			pass
 		return self
 		
 	def repeat_action(self):
