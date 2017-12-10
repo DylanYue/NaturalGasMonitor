@@ -177,13 +177,13 @@ def PlaceSetter(columnNumber):
 	if columnNumber == 0:
 		posX = 25
 	elif columnNumber == 1:
-		posX = 45
+		posX = 46
 	elif columnNumber == 2:
-		posX = 55
-	elif columnNumber == 3:
 		posX = 65
+	elif columnNumber == 3:
+		posX = 81
 	elif columnNumber == 4:
-		posX = 80
+		posX = 91
 	DrawText(posX, 2, "^")
 #--------------------------------------END OLED Functions-----------------------------------------------#
 
