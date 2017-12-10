@@ -243,9 +243,7 @@ class SensorState(State):
 			return InitialState()
 		else:
 			pass
-			
-		return self
-		
+
 		if button == "U":
 			Arrow.move_up()
 		else:
@@ -255,6 +253,8 @@ class SensorState(State):
 			Arrow.move_down()
 		else:
 			pass
+
+		return self
 	
 	def repeat_action(self):
 		pass
@@ -358,11 +358,11 @@ class SetTimeState(State):
 		ClearTextArea()
 		self.setterPosition = 0
 		self.now = datetime.now()
-		self.year = now.year
-		self.month = now.month
-		self.day = now.day
-		self.hour = now.hour
-		self.minute = now.minute
+		self.year = self.now.year
+		self.month = self.now.month
+		self.day = self.now.day
+		self.hour = self.now.hour
+		self.minute = self.now.minute
 		DrawText(14, 0, str(self.now))
 		
 	def on_button_pressed(self, selector_pos, button):
