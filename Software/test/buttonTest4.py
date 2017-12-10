@@ -350,8 +350,8 @@ class LiveReadingState(State):
 	def repeat_action(self):
 		ClearTextArea()
 		KPa = ReadPressureKPa()
-		displayString ="Current Reading: " + str(KPa) + " KPa"
-		DrawText(14, 0, displayString)
+		DrawText(14, 0, "Current Reading:")
+		DrawText(14, 1, str(KPa) + " KPa")
 	
 	
 class WifiState(State):
