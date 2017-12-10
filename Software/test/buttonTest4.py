@@ -411,29 +411,29 @@ class SetTimeState(State):
 			pass
 		
 		if button == "U":
-			if self.setter.current_pos == 0:
+			if self.setter.current_pos() == 0:
 				self.year += 1
-			elif self.setter.current_pos == 1:
+			elif self.setter.current_pos() == 1:
 				self.month += 1
-			elif self.setter.current_pos == 2:
+			elif self.setter.current_pos() == 2:
 				self.day += 1
-			elif self.setter.current_pos == 3:
+			elif self.setter.current_pos() == 3:
 				self.hour += 1
-			elif self.setter.current_pos == 4:
+			elif self.setter.current_pos() == 4:
 				self.minute += 1
 		else:
 			pass
 			
 		if button == "D":
-			if self.setter.current_pos == 0:
+			if self.setter.current_pos() == 0:
 				self.year -= 1
-			elif self.setter.current_pos == 1:
+			elif self.setter.current_pos() == 1:
 				self.month -= 1
-			elif self.setter.current_pos == 2:
+			elif self.setter.current_pos() == 2:
 				self.day -= 1
-			elif self.setter.current_pos == 3:
+			elif self.setter.current_pos() == 3:
 				self.hour -= 1
-			elif self.setter.current_pos == 4:
+			elif self.setter.current_pos() == 4:
 				self.minute -= 1
 		else:
 			pass
