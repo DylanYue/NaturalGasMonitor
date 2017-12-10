@@ -469,7 +469,7 @@ class Setter(object):
 	def __init__(self, setterPos):
 		ClearSetter()
 		self.setterPos = setterPos
-		PlaceSetter(self.selectorPos)
+		PlaceSetter(self.setterPos)
 		
 	def move_left(self):
 	# Move slector up once
