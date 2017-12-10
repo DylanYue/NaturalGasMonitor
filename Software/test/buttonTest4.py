@@ -6,7 +6,6 @@
 import os
 import time
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
 from datetime import timedelta 
 import RPi.GPIO as GPIO
 
@@ -188,17 +187,14 @@ def PlaceSetter(columnNumber):
 		posX = 102
 	DrawText(posX, 1, "^")
 #--------------------------------------END OLED Functions-----------------------------------------------#
-def add_years(d, years):
+def add_years(d, year):
     """Return a date that's `years` years after the date (or datetime)
     object `d`. Return the same calendar date (month and day) in the
     destination year, if it exists, otherwise use the following day
     (thus changing February 29 to March 1).
 
     """
-    try:
-        return d.replace(year = d.year + years)
-    except ValueError:
-        return d + (date(d.year + years, 1, 1) - date(d.year, 1, 1))
+	return d + timedelta(years = year)
 		
 def add_months(d, month):
 	mon_rel = relativedelta(months=month)
