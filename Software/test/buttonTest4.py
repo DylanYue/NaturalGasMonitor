@@ -314,7 +314,12 @@ class TimeState(State):
 		
 	def repeat_action(self):
 		pass
-		
+
+class SetTimeState(State):
+	# You set times in this state.
+	def __init__(self):
+		ClearTextArea()
+		DrawText(14, 0, str(datetime.now()))
 # class SDCardState(State):
 	
 	# def __init__(self):
