@@ -175,16 +175,16 @@ def PlaceSetter(columnNumber):
 	# This function draws the selector on the screen, it takes the row number as input
 	columnNumber = SetterPosConditioner(columnNumber)
 	if columnNumber == 0:
-		posX = 25
+		posX = 24
 	elif columnNumber == 1:
-		posX = 46
+		posX = 47
 	elif columnNumber == 2:
 		posX = 65
 	elif columnNumber == 3:
-		posX = 81
+		posX = 82
 	elif columnNumber == 4:
-		posX = 91
-	DrawText(posX, 2, "^")
+		posX = 102
+	DrawText(posX, 1, "^")
 #--------------------------------------END OLED Functions-----------------------------------------------#
 
 
