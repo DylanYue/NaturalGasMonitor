@@ -332,7 +332,7 @@ class SetTimeState(State):
 		day = now.day
 		hour = now.hour
 		minute = now.minute
-		DrawText(14, 0, str(year)+'-'+str(month)+'-'+str(day)+' '+str(hour)+':'+str(minute))
+		DrawText(14, 0, str(now))
 		
 	def on_button_pressed(self, selector_pos, button):
 		if button == "B":
