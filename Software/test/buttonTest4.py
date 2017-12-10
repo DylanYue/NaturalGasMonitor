@@ -181,7 +181,7 @@ def PlaceSetter(columnNumber):
 	elif columnNumber == 2:
 		posX = 65
 	elif columnNumber == 3:
-		posX = 82
+		posX = 83
 	elif columnNumber == 4:
 		posX = 102
 	DrawText(posX, 1, "^")
