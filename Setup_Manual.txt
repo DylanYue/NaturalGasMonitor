@@ -43,3 +43,51 @@ This instruction is for setting up a Raspberry Pi Zero W without a monitor or ke
 
 13. Change your password by using "sudo passwd" command.
 
+14. Run the following commands to update the Pi:
+	1. sudo apt-get update
+	2. sudo apt-get upgrade
+	
+15. Install git by running the following command:
+	sudo apt-get install git
+	
+16. Clone the repository by running the following command:
+	git clone https://github.com/DylanYue/NaturalGasMonitor.git
+
+17. Install python dateutil package by running:
+	git apt-get install python-dateutil
+
+18. Install Adafruit libraries by running: (https://github.com/adafruit/Adafruit_Python_GPIO)
+	1. sudo apt-get install build-essential python-pip python-dev python-smbus python-imaging
+	2. git clone https://github.com/adafruit/Adafruit_Python_GPIO.git
+	3. cd Adafruit_Python_GPIO
+	4. sudo python setup.py install
+	5. cd ~
+	
+19. Install SSD1306 (OLED) libraries
+	1. git clone https://github.com/adafruit/Adafruit_Python_SSD1306.git
+	2. cd Adafruit_Python_SSD1306
+	3. sudo python setup.py install
+	4. cd ~
+	
+20. Install MCP3008 (ADC chip) libraries:
+	sudo pip install adafruit-mcp3008
+	
+21. Enable I2C by:
+	1. sudo raspi-config
+	2. go to "interfacing options"
+	3. go to "I2C"
+	4. Enable.
+	
+22. Check to make sure the system can find the OLED I2C by running:
+	sudo i2cdetect -y 1
+	find a device "3c" in the list
+	
+23. Reboot the Pi:
+	sudo reboot
+
+24. Run the main program:
+	1. cd NaturalGasMonitor
+	2. python main.py
+	
+
+	
