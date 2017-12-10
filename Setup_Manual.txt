@@ -1,0 +1,45 @@
+How to set up Natural Gas IoT:
+
+This instruction is for setting up a Raspberry Pi Zero W without a monitor or keyboard!! 
+
+1. Download the OS (Raspbian_Lite):
+	https://www.raspberrypi.org/downloads/raspbian/
+	
+2. Download SD card tool to write OS image into SD card:
+	https://etcher.io/
+	
+3. Flash the OS downloaded from step 1 using tool downloaded in step 2 into your SD card.
+
+4. Enable SSH by creating a file with the name of "ssh" with nothing in the file (Note: without any extensions)
+
+5. Copy the "ssh" file into "boot" drive.
+
+6. Enable Wifi by creating a file called "wpa_supplicant.conf" put the following content in the file:
+
+	country=US
+	ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+	update_config=1
+
+	network={
+	 ssid="WIFI_SSID"
+	 scan_ssid=1
+	 psk="WIFI_PASSWORD"
+	 key_mgmt=WPA-PSK
+	}
+	
+7. Copy the "wpa_supplicant.conf" file into boot.
+
+8. Download Putty for SSH:
+	http://www.putty.org/
+	
+9. Download a IP scanner to find the raspberry pi on your local network
+	http://angryip.org/download/#windows
+	
+10. Insert the SD card created from previous steps and connect the Raspberry Pi to power, wait for 30 to 60 seconds for it to connect to wifi.
+
+11. Use the IP scanner downloaded from step 9 to look for the IP address of the RPi.
+
+12. After finding the IP address, use Putty to SSH into the system. (Default username: pi, password: raspberry)
+
+13. Change your password by using "sudo passwd" command.
+
