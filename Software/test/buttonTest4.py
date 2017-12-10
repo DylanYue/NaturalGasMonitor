@@ -199,8 +199,7 @@ class InitialState(State):
 		if selector_pos == 2 and button == "A":
 			return TimeState()
 		else:
-			pass
-			
+			pass		
 		if button == "U":
 			Arrow.move_up()
 		else:
@@ -246,6 +245,16 @@ class SensorState(State):
 			pass
 			
 		return self
+		
+		if button == "U":
+			Arrow.move_up()
+		else:
+			pass
+			
+		if button == "D":
+			Arrow.move_down()
+		else:
+			pass
 	
 	def repeat_action(self):
 		pass
@@ -298,6 +307,15 @@ class WifiState(State):
 		else:
 			pass
 		
+		if button == "U":
+			Arrow.move_up()
+		else:
+			pass
+			
+		if button == "D":
+			Arrow.move_down()
+		else:
+			pass
 		return self
 		
 	def repeat_action(self):
@@ -320,6 +338,15 @@ class TimeState(State):
 		else:
 			pass
 		
+		if button == "U":
+			Arrow.move_up()
+		else:
+			pass
+			
+		if button == "D":
+			Arrow.move_down()
+		else:
+			pass
 		return self
 		
 	def repeat_action(self):
@@ -510,7 +537,6 @@ while 1:
 	NGR.state.repeat_action() # Do the repeat action for each class first.
 	if ButtonU.ButtonPressed():
 		NGR.on_button_pressed(Arrow.current_pos(), "U")
-		Arrow.move_up()
 	else:
 		pass
 		
