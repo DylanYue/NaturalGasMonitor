@@ -6,6 +6,8 @@
 import os
 import time
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
+from datetime import timedelta 
 import RPi.GPIO as GPIO
 
 import Adafruit_GPIO.SPI as SPI
@@ -186,6 +188,32 @@ def PlaceSetter(columnNumber):
 		posX = 102
 	DrawText(posX, 1, "^")
 #--------------------------------------END OLED Functions-----------------------------------------------#
+def add_years(d, years):
+    """Return a date that's `years` years after the date (or datetime)
+    object `d`. Return the same calendar date (month and day) in the
+    destination year, if it exists, otherwise use the following day
+    (thus changing February 29 to March 1).
+
+    """
+    try:
+        return d.replace(year = d.year + years)
+    except ValueError:
+        return d + (date(d.year + years, 1, 1) - date(d.year, 1, 1))
+		
+def add_months(d, month):
+	mon_rel = relativedelta(months=month)
+    return d + mon_rel
+	
+def add_days(d, day):
+	return d + timedelta(days = day)
+	
+def add_hours(d, hour):
+	return d + timedelta(hours = hour)
+	
+def add_minutes(d, minute):
+	return d + timedelta(minutes = minute)
+
+	
 
 
 #------------------------------	State Machine Code-----------------------------------------------------
@@ -412,37 +440,37 @@ class SetTimeState(State):
 		
 		if button == "U":
 			if self.setter.current_pos() == 0:
-				self.year += 1
+				self.now = add_years(self.now, 1)
 			elif self.setter.current_pos() == 1:
-				self.month += 1
+				self.now = add_months(self.now, 1)
 			elif self.setter.current_pos() == 2:
-				self.day += 1
+				self.now = add_days(self.now, 1)
 			elif self.setter.current_pos() == 3:
-				self.hour += 1
+				self.now = add_hours(self.now, 1)
 			elif self.setter.current_pos() == 4:
-				self.minute += 1
+				self.now = add_minutes(self.now, 1)
 		else:
 			pass
 			
 		if button == "D":
 			if self.setter.current_pos() == 0:
-				self.year -= 1
+				self.now = add_years(self.now, -1)
 			elif self.setter.current_pos() == 1:
-				self.month -= 1
+				self.now = add_months(self.now, -1)
 			elif self.setter.current_pos() == 2:
-				self.day -= 1
+				self.now = add_days(self.now, -1)
 			elif self.setter.current_pos() == 3:
-				self.hour -= 1
+				self.now = add_hours(self.now, -1)
 			elif self.setter.current_pos() == 4:
-				self.minute -= 1
+				self.now = add_minutes(self.now, -1)
 		else:
 			pass
 		return self
 		
 	def repeat_action(self):
 		ClearScreen()
-		timeString = str(self.year)+'-'+str(self.month).rjust(2)+'-'+str(self.day).rjust(2)+' '+str(self.hour).rjust(2)+':'+str(self.minute).rjust(2)
-		DrawText(14, 0, timeString)
+		#timeString = str(self.year)+'-'+str(self.month).rjust(2)+'-'+str(self.day).rjust(2)+' '+str(self.hour).rjust(2)+':'+str(self.minute).rjust(2)
+		DrawText(14, 0, str(self.now))
 		pass
 # class SDCardState(State):
 	
