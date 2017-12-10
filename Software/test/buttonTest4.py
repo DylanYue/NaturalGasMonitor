@@ -428,7 +428,8 @@ class SetTimeState(State):
 			else:
 				command = "sudo timedatectl set-time '" + time.strftime("%Y-%m-%d %H:%M:%S") + "'"
 				os.system("sudo timedatectl set-ntp 0")
-				os.system(command) 
+				os.system(command)
+				DrawText(14, 3, "Time Adjusted!")
 		else:
 			pass
 			
