@@ -440,6 +440,7 @@ class SetTimeState(State):
 		return self
 		
 	def repeat_action(self):
+		ClearScreen()
 		timeString = str(self.year)+'-'+str(self.month).rjust(2)+'-'+str(self.day).rjust(2)+' '+str(self.hour).rjust(2)+':'+str(self.minute).rjust(2)
 		DrawText(14, 0, timeString)
 		pass
