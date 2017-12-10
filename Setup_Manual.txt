@@ -82,12 +82,14 @@ This instruction is for setting up a Raspberry Pi Zero W without a monitor or ke
 	sudo i2cdetect -y 1
 	find a device "3c" in the list
 	
-23. Reboot the Pi:
+23. Speed up I2C:
+	1. sudo nano /boot/config.txt
+	2. add this line to the end of the file:
+		dtparam=i2c_baudrate=1000000
+
+24. Reboot the Pi:
 	sudo reboot
 
-24. Run the main program:
+25. Run the main program:
 	1. cd NaturalGasMonitor
 	2. python main.py
-	
-
-	
