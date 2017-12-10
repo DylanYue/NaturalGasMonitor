@@ -317,9 +317,38 @@ class TimeState(State):
 
 class SetTimeState(State):
 	# You set times in this state.
+	
+	year = 0
+	month = 0
+	day = 0
+	hour = 0
+	minute = 0
+	second = 0
 	def __init__(self):
 		ClearTextArea()
-		DrawText(14, 0, str(datetime.now()))
+		now = datetime.now()
+		year = now.year
+		month = now.month
+		day = now.day
+		hour = now.hour
+		minute = now.minute
+		DrawText(14, 0, str(year)+'-'+str(month)+'-'+str(day)+' '+str(hour)+':'+str(minute))
+		
+	def on_button_pressed(self, selector_pos, button):
+		if button == "B":
+			return TimeState()
+		else:
+			pass
+			
+		if selector_pos == 0 and button == "A":
+			return SetTimeState()
+		else:
+			pass
+		
+		return self
+		
+	def repeat_action(self):
+		pass
 # class SDCardState(State):
 	
 	# def __init__(self):
