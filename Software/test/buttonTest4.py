@@ -426,9 +426,9 @@ class SetTimeState(State):
 			if not self.time_changed:
 				return SetTimeState()
 			else:
-				command = "sudo timedatectl set-time '" + time.strftime("%Y-%m-%d %H:%M:%S") + "'"
+				command = "'" + time.strftime("%Y-%m-%d %H:%M:%S") + "'"
 				os.system("sudo timedatectl set-ntp 0")
-				os.system(command)
+				subprocess.call(['sudo', 'timedatectl', 'set-time', 'command'])
 				DrawText(14, 3, "Time Adjusted!")
 		else:
 			pass
