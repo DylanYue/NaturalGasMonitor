@@ -99,6 +99,10 @@ def ClearSelector():
 	# This function clears only the selector area (0, 0) to (13, 60)
 	draw.rectangle((0, 0, 13, 60), outline = 0, fill = 0)
 	
+def ClearSetter():
+	# This function clears the time setter area (14, 10) to (width, 30)
+	draw.rectangle((14, 10, width, 30), outline = 0, fill = 0)
+	
 def ClearTextArea():
 	# This function clears only the text area (14, 0) to (width, 60)
 	draw.rectangle((14, 0, width, 60), outline = 0, fill = 0)
@@ -161,6 +165,26 @@ def SelectorPosConditioner (rawPos):
 def PlaceSelector(rowNumber):
 	# This function draws the selector on the screen, it takes the row number as input
 	DrawText(0, SelectorPosConditioner(rowNumber), "->")
+
+def SetterPosConditioner (rawPos):
+	# This function always returns the selector's real position on the screen (0 - 5)
+	# It takes the "raw" selector position as the input
+	return rawPos % 5
+	
+def PlaceSetter(columnNumber):
+	# This function draws the selector on the screen, it takes the row number as input
+	columnNumber = SetterPosConditioner(columnNumber)
+	if columnNumber = 0:
+		posX = 15
+	elif columnNumber = 1:
+		posX = 20
+	elif columnNumber = 2:
+		posX = 30
+	elif columnNumber = 3:
+		posX = 40
+	elif columnNumber = 4:
+		posX = 60
+	DrawText(posX, 2, "^")
 #--------------------------------------END OLED Functions-----------------------------------------------#
 
 
@@ -363,6 +387,7 @@ class SetTimeState(State):
 		self.day = self.now.day
 		self.hour = self.now.hour
 		self.minute = self.now.minute
+		self.setter = Setter(0)
 		DrawText(14, 0, str(self.now))
 		
 	def on_button_pressed(self, selector_pos, button):
@@ -375,8 +400,14 @@ class SetTimeState(State):
 			return SetTimeState()
 		else:
 			pass
-		if selector_pos == 0 and button == "A":
-			return SetTimeState()
+			
+		if button == "L":
+			self.setter.move_left()
+		else:
+			pass
+			
+		if button == "R":
+			self.setter.move_right()
 		else:
 			pass
 		
@@ -402,7 +433,6 @@ class Device(object):
 #---------------------------End State Machine Functions--------------------------#
 
 #-----------------------------Selector Class-------------------------------------#
-
 class Selector(object):
 	# Selector class to store the information of the selector
 	def __init__(self, selectorPos):
@@ -432,6 +462,37 @@ class Selector(object):
 	# Return the current position of the selector on the screen (0 - 5)
 		return self.selectorPos % 6
 #----------------------------End Selector Class-------------------------------------#
+
+#-----------------------------Setter Class-------------------------------------#
+class Setter(object):
+	# Selector class to store the information of the time setter
+	def __init__(self, setterPos):
+		ClearSetter()
+		self.setterPos = setterPos
+		PlaceSetter(self.selectorPos)
+		
+	def move_left(self):
+	# Move slector up once
+		ClearSetter()
+		self.setterPos -= 1
+		PlaceSetter(self.setterPos)
+		
+	def move_right(self):
+	# Move selector down once
+		ClearSetter()
+		self.setterPos += 1
+		PlaceSetter(self.setterPos)
+		
+	def setter_reset(self):
+	# Reset the selector to 0 position
+		ClearSetter()
+		self.setterPos = 0
+		PlaceSetter(self.setterPos)
+		
+	def current_pos(self):
+	# Return the current position of the selector on the screen (0 - 5)
+		return self.setterPos % 5
+#----------------------------End Setter Class-------------------------------------#
 
 #----------------------------Push Button Class--------------------------------------#
 class PushButton(object):
