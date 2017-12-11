@@ -391,6 +391,38 @@ class WifiState(State):
 	def repeat_action(self):
 		pass
 		
+class WifiOnState(State):
+	# Wifi on state.
+	def __init__(self):
+		ClearTextArea()
+		DrawText(14, 0, "Turn on")
+		DrawText(14, 1, "Turn off")
+	
+	def on_button_pressed(self, selector_pos, button):
+		if button == "B":
+			return WifiState()
+		else:
+			pass
+		
+	def repeat_action(self):
+		pass
+		
+class WifiOffState(State):
+	# Wifi off state.
+	def __init__(self):
+		ClearTextArea()
+		DrawText(14, 0, "Turn on")
+		DrawText(14, 1, "Turn off")
+	
+	def on_button_pressed(self, selector_pos, button):
+		if button == "B":
+			return WifiState()
+		else:
+			pass
+		
+	def repeat_action(self):
+		pass
+	
 class TimeState(State):
 	# You set times in this state.
 	def __init__(self):
@@ -634,7 +666,7 @@ def InitializeFile():
 	if filePath:
 		pass
 	else:
-		fileName = str(datetime.now())
+		fileName = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")+".csv"
 		here = os.path.dirname(os.path.realpath(__file__))
 		subdir = "data"
 		filePath = os.path.join(here, subdir, fileName)
