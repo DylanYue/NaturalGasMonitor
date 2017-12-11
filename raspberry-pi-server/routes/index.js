@@ -6,14 +6,13 @@ var path = require('path');
 var Promise = require('bluebird');
 var moment = require('moment');
 
-const filePath = __dirname + '/../../DataSample/';
+const filePath = __dirname + '/../../NaturalGasMonitor/data/';
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 router.get('/getData', async function (req, res, next) {
     var dataSample = [];
-    console.log(__dirname + '/../../DataSample/Data.csv');
     var input = fs.createReadStream(filePath+'Data.csv');
     var csvStream = csv()
     .on("data", function (data) {
